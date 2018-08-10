@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   namespace :api do
     get '/exercises' => 'exercises#index'
     get '/exercises/:id' => 'exercises#show'
+
+    get '/users/all' => 'users#index'
+    get '/users/profile' => 'users#show'
+    post '/users' => 'users#create'
   end
 end
