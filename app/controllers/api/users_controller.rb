@@ -28,4 +28,12 @@ class Api::UsersController < ApplicationController
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
+
+  def update
+    
+  end
+
+  def destroy
+    
+  end
 end

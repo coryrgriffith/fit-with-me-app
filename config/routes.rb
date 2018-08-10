@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     get '/users/all' => 'users#index'
     get '/users/profile' => 'users#show'
     post '/users' => 'users#create'
+    # update
+    # destroy
+
+    post '/sessions' => 'sessions#create'
   end
 end
