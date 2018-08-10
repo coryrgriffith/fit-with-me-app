@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/users/all' => 'users#index'
     get '/users/profile' => 'users#show'
     post '/users' => 'users#create'
-    # update
+    patch '/users/:id' => 'users#update'
     # destroy
 
     post '/sessions' => 'sessions#create'
