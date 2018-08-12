@@ -8,6 +8,6 @@ json.weight user.weight
 json.city user.city
 json.email user.email
 
-json.friends user.friends
-json.fit_groups user.fit_groups
-json.workouts user.workouts
+# json.friends user.friends
+# json.fit_groups user.fit_groups
+# json.workouts user.workouts

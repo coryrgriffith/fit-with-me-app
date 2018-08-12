@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     get '/exercises' => 'exercises#index'
     get '/exercises/:id' => 'exercises#show'
 
-    get '/users/all' => 'users#index'
-    get '/users/profile' => 'users#show'
+    get '/users/' => 'users#index'
+    get '/users/:id' => 'users#show'
     post '/users' => 'users#create'
     patch '/users/:id' => 'users#update'
     # destroy
