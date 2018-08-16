@@ -1,5 +1,21 @@
 /* global Vue, VueRouter, axios */
 
+var AllUsersPage = {
+  template: "#all-users-page",
+  data: function() {
+    return {
+      users: []
+    };
+  },
+  created: function() {
+    axios.get('/api/users').then(function(response) {
+      this.users = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var AllExercisesPage = {
   template: "#all-exercises-page",
   data: function() {
@@ -168,6 +184,42 @@ var UserHomePage = {
   computed: {}
 };
 
+var NewWorkoutPage = {
+  template: "#new-workout-page",
+  data: function() {
+    return {
+      exercises:[],
+      selectedExercise: [],
+      errors: []
+    };
+  },
+  created: function() {
+    axios.get('/api/exercises').then(function(response) {
+      this.exercises = response.data;
+    }.bind(this));
+  },
+  methods: {
+    changeExercise: function(inputExercise) {
+      this.selectedExercise = inputExercise;
+    },
+    submit: function() {
+      var params = {
+        
+      };
+      // axios
+      //   .post("/api/users", params)
+      //   .then(function(response) {
+      //     router.push("/login");
+      //   })
+      //   .catch(
+      //     function(error) {
+      //       this.errors = error.response.data.errors;
+      //     }.bind(this)
+      //   );
+    }
+  }
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
@@ -176,7 +228,9 @@ var router = new VueRouter({
     { path: "/logout", component: LogoutPage },
     { path: "/users/:id", component: UserHomePage },
     { path: "/exercises", component: AllExercisesPage },
-    { path: "/exercises/:id", component: ExercisePage }
+    { path: "/users", component: AllUsersPage },
+    { path: "/exercises/:id", component: ExercisePage },
+    { path: "/workouts/new", component: NewWorkoutPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

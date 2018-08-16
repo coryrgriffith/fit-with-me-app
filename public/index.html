@@ -25,9 +25,10 @@
               <a class="nav-link" href="/#/users/:id">Personal Home Page <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Orders</a>
-            </li><li class="nav-item">
-              <a class="nav-link" href="#">Create New Product</a>
+              <a class="nav-link" href="/#/workouts/new">Create New Workout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#/fit_groups/new">Create New Fit Group</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,14 +97,14 @@
     <h1>Welcome to Your Personal Home Page</h1>
     
     <div>
-      <p>{{ user.username }}</p>
-      <p>{{ user.first_name }}</p>
-      <p>{{ user.last_name }}</p>
-      <p>{{ user.age }}</p>
-      <p>{{ user.height }}</p>
-      <p>{{ user.weight }}</p>
-      <p>{{ user.city }}</p>
-      <p>{{ user.email }}</p>
+      <p>Username: {{ user.username }}</p>
+      <p>First Name: {{ user.first_name }}</p>
+      <p>Last Name: {{ user.last_name }}</p>
+      <p>Age: {{ user.age }}</p>
+      <p>Height: {{ user.height }}</p>
+      <p>Weight: {{ user.weight }}</p>
+      <p>City: {{ user.city }}</p>
+      <p>Email: {{ user.email }}</p>
     </div>
 
   </div>
@@ -119,6 +120,23 @@
             <p class="card-description">Target Muscle: {{ exercise.target_muscle }}</p>
             <p class="card-price">Required Equipment: {{ exercise.required_equipment }}</p>
             <a v-bind:href="'/#/exercises/' + exercise.id" class="btn btn-primary">Go To Exercise Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="all-users-page">
+  <div class="vue-component">
+    <div v-for="user in users"> 
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Username: {{ user.username }}</h5>
+            <p class="card-description">First Name: {{ user.first_name }}</p>
+            <p class="card-price">City: {{ user.city }}</p>
+            <a v-bind:href="/#/" class="btn btn-primary">Add Friend</a>
           </div>
         </div>
       </div>
@@ -202,5 +220,50 @@
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
 
+  </div>
+</template>
+
+<template id="new-workout-page">
+  <div class="vue-component">
+    <div class="container">
+      <div v-for="exercise in exercises"> 
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ exercise.title }}</h5>
+              <p class="card-description">Target Muscle: {{ exercise.target_muscle }}</p>
+              <p class="card-price">Required Equipment: {{ exercise.required_equipment }}</p>
+              <button v-on:click="changeExercise(exercise)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">See More Info
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Exercise Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h1>{{ selectedExercise.title }}</h1>
+            <p>{{ selectedExercise.exercise_type }}</p>
+            <p>{{ selectedExercise.target_muscle }}</p>
+            <p>{{ selectedExercise.required_equipment }}</p>
+            <p>{{ selectedExercise.difficulty_level }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
 </template>

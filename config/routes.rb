@@ -12,5 +12,25 @@ Rails.application.routes.draw do
     # destroy
 
     post '/sessions' => 'sessions#create'
+
+    get '/fit_groups' => 'fit_groups#index'
+    get '/fit_groups/:id' => 'fit_groups#show'
+    post '/fit_groups' => 'fit_groups#create'
+    patch '/fit_groups/:id' => 'fit_groups#update'
+    delete '/fit_groups/:id' => 'fit_groups#destroy'
+
+    get '/workouts' => 'workouts#index'
+    get '/workouts/:id' => 'workouts#show'
+    post '/workouts' => 'workouts#create'
+    patch '/workouts/:id' => 'workouts#update'
+    delete '/workouts/:id' => 'workouts#destroy'
+
+    get '/exercise_workouts' => 'exercise_workouts#index'
+    get '/exercise_workouts/:id' => 'exercise_workouts#show'
+    post '/exercise_workouts' => 'exercise_workouts#create'
+    delete '/exercise_workouts/:id' => 'exercise_workouts#destroy'
+
+
+
   end
 end
