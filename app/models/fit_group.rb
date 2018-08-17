@@ -4,4 +4,5 @@ class FitGroup < ApplicationRecord
   has_many :shared_workouts
   has_many :workouts, through: :shared_workouts
   belongs_to :captain
+  has_many :user_exercises
 end

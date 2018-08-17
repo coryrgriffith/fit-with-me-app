@@ -10,9 +10,12 @@ class Api::WorkoutsController < ApplicationController
   end
 
   def create
-    params = {
-      
+    workout_params = {
+      name: params[:name],
+      target_goal: params[:target_goal]
     }
+    @workout = Workout.new(workout_params)
+    @workout.save
   end
 
   def update

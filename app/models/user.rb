@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :user_fit_groups
   has_many :fit_groups, through: :user_fit_groups
+  has_many :user_exercises
 end

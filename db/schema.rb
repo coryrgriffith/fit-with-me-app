@@ -1,4 +1,4 @@
-  # This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_003900) do
+ActiveRecord::Schema.define(version: 2018_08_17_165848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2018_08_10_003900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_exercises", force: :cascade do |t|
+    t.boolean "user_id"
+    t.boolean "fit_group_id"
+    t.boolean "workout_id"
+    t.boolean "exercise_id"
+    t.string "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_fit_groups", force: :cascade do |t|
     t.integer "user_id"
     t.integer "fit_group_id"
@@ -95,10 +105,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_003900) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer "shared_workout_id"
-    t.integer "exercise_workout_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "target_goal"
   end
 
   add_foreign_key "friendships", "users", column: "friend_id"
