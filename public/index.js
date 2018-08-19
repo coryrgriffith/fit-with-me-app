@@ -190,6 +190,13 @@ var NewWorkoutPage = {
     return {
       exercises:[],
       selectedExercise: [],
+      cartedExercises: [
+        {
+          title: "Dumbell",
+          exercise_type: "Strength",
+          target_muscle: "Biceps"
+        }
+      ],
       errors: []
     };
   },
@@ -202,21 +209,27 @@ var NewWorkoutPage = {
     changeExercise: function(inputExercise) {
       this.selectedExercise = inputExercise;
     },
-    submit: function() {
-      var params = {
-        
+    addToCartedExercises: function(inputExercise) {
+      var exerciseParams = {
+        exercise_id: inputExercise.id
       };
-      // axios
-      //   .post("/api/users", params)
-      //   .then(function(response) {
-      //     router.push("/login");
-      //   })
-      //   .catch(
-      //     function(error) {
-      //       this.errors = error.response.data.errors;
-      //     }.bind(this)
-      //   );
-    }
+      axios.post("/api/carted_exercises", exerciseParams).then(function(response) {
+        this.cartedExercises.push(response.data);
+        router.push("/workouts/new");
+      }.bind(this));
+    },
+    // submit: function() {
+    //   axios
+    //     .post("/api/users", params)
+    //     .then(function(response) {
+    //       router.push("/login");
+    //     })
+    //     .catch(
+    //       function(error) {
+    //         this.errors = error.response.data.errors;
+    //       }.bind(this)
+    //     );
+    // }
   }
 };
 

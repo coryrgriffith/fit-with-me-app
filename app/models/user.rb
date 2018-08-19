@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :user_fit_groups
   has_many :fit_groups, through: :user_fit_groups
   has_many :user_exercises
+  has_many :carted_exercises
 end

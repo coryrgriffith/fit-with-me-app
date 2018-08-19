@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_17_165848) do
+ActiveRecord::Schema.define(version: 2018_08_19_185903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "captains", force: :cascade do |t|
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carted_exercises", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "exercise_id"
+    t.integer "workout_id"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,13 +83,13 @@ ActiveRecord::Schema.define(version: 2018_08_17_165848) do
   end
 
   create_table "user_exercises", force: :cascade do |t|
-    t.boolean "user_id"
-    t.boolean "fit_group_id"
-    t.boolean "workout_id"
-    t.boolean "exercise_id"
     t.string "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "fit_group_id"
+    t.integer "workout_id"
+    t.integer "exercise_id"
   end
 
   create_table "user_fit_groups", force: :cascade do |t|
