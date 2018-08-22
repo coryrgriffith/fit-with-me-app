@@ -226,15 +226,18 @@
 <template id="new-workout-page">
   <div class="vue-component">
     <div class="container">
-      <div v-for="cartedExercise in cartedExercises">
-        <div v-if="cartedExercise.exercise">
-          <p>{{ cartedExercise.id }}</p>
-          <p>{{ cartedExercise.exercise.title }}</p>
-          <p>{{ cartedExercise.exercise.exercise_type }}</p>
-          <p>{{ cartedExercise.exercise.target_muscle }}</p>
-          <p>{{ cartedExercise.exercise.required_equipment }}</p>
-          <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+      <div id="exercise-cart">
+        <div v-for="cartedExercise in cartedExercises">
+          <div v-if="cartedExercise.exercise">
+            <p>{{ cartedExercise.id }}</p>
+            <p>{{ cartedExercise.exercise.title }}</p>
+            <p>{{ cartedExercise.exercise.exercise_type }}</p>
+            <p>{{ cartedExercise.exercise.target_muscle }}</p>
+            <p>{{ cartedExercise.exercise.required_equipment }}</p>
+            <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+          </div>
         </div>
+        <button class="btn btn-primary" v-on:click="createWorkout()">Create Workout</button>
       </div>
 
       <div v-for="exercise in exercises"> 
@@ -271,7 +274,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button v-on:click="addToCartedExercises(exercise)" class="btn btn-secondary" data-dismiss="modal">Add Exercise To Workout</button>
+              <button v-on:click="addToCartedExercises(selectedExercise)" class="btn btn-secondary" data-dismiss="modal">Add Exercise To Workout</button>
             </div>
           </div>
         </div>
