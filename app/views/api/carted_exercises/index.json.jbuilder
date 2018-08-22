@@ -1,0 +1,1 @@
+json.array! @carted_exercises, partial: 'carted_exercise', as: :carted_exercise

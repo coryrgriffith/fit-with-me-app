@@ -1,0 +1,1 @@
+json.partial! 'carted_exercise', carted_exercise: @carted_exercise

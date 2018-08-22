@@ -227,9 +227,14 @@
   <div class="vue-component">
     <div class="container">
       <div v-for="cartedExercise in cartedExercises">
-        <p>{{ cartedExercise.title }}</p>
-        <p>{{ cartedExercise.exercise_type }}</p>
-        <p>{{ cartedExercise.target_muscle }}</p>
+        <div v-if="cartedExercise.exercise">
+          <p>{{ cartedExercise.id }}</p>
+          <p>{{ cartedExercise.exercise.title }}</p>
+          <p>{{ cartedExercise.exercise.exercise_type }}</p>
+          <p>{{ cartedExercise.exercise.target_muscle }}</p>
+          <p>{{ cartedExercise.exercise.required_equipment }}</p>
+          <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+        </div>
       </div>
 
       <div v-for="exercise in exercises"> 

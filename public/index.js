@@ -188,19 +188,36 @@ var NewWorkoutPage = {
   template: "#new-workout-page",
   data: function() {
     return {
-      exercises:[],
-      selectedExercise: [],
+      exercises: [],
+      selectedExercise: {
+        title: "",
+        exercise_type: "",
+        target_muscle: "",
+        required_equipment: "",
+        difficulty_level: ""
+      },
       cartedExercises: [
         {
-          title: "Dumbell",
-          exercise_type: "Strength",
-          target_muscle: "Biceps"
+          id: ""
+        },
+        {
+          exercise:  {
+            id: "",
+            title: "",
+            exercise_type: "",
+            target_muscle: "",
+            required_equipment: "",
+            difficulty_level: ""
+          }
         }
       ],
       errors: []
     };
   },
   created: function() {
+    axios.get('/api/carted_exercises').then(function(response) {
+      this.cartedExercises = response.data;
+    }.bind(this));
     axios.get('/api/exercises').then(function(response) {
       this.exercises = response.data;
     }.bind(this));
@@ -211,11 +228,21 @@ var NewWorkoutPage = {
     },
     addToCartedExercises: function(inputExercise) {
       var exerciseParams = {
-        exercise_id: inputExercise.id
+        exercise_id: inputExercise.id,
+
       };
       axios.post("/api/carted_exercises", exerciseParams).then(function(response) {
-        this.cartedExercises.push(response.data);
-        router.push("/workouts/new");
+        console.log(response.data);
+        console.log('that was response.data');
+        console.log(response.config.data);
+        console.log('that was response.config.data');
+        this.cartedExercises.push(...response.config.data);
+        // router.push("/workouts/new");
+      }.bind(this));
+
+      axios.get("/api/carted_exercises").then(function(response) {
+        console.log(response.data);
+        this.cartedExercises = response.data;
       }.bind(this));
     },
     // submit: function() {

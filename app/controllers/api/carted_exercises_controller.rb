@@ -1,6 +1,7 @@
 class Api::CartedExercisesController < ApplicationController
   def index
-    
+    @carted_exercises = current_user.carted_exercises.where(status: 'Carted')
+    render "index.json.jbuilder"
   end
 
   def show
@@ -15,6 +16,7 @@ class Api::CartedExercisesController < ApplicationController
       status: "Carted"
     )
     @carted_exercise.save
+    render "index.json.jbuilder"
   end
 
   def destroy
