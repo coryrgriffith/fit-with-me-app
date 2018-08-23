@@ -25,9 +25,10 @@ Rails.application.routes.draw do
     patch '/workouts/:id' => 'workouts#update'
     delete '/workouts/:id' => 'workouts#destroy'
 
-    # get '/exercise_workouts' => 'exercise_workouts#index'
-    # get '/exercise_workouts/:id' => 'exercise_workouts#show'
+    # both of the first routes gor to create in oreder to allow my app to redirect to the create action
+    get '/exercise_workouts' => 'exercise_workouts#create'
     post '/exercise_workouts' => 'exercise_workouts#create'
+    # get '/exercise_workouts/:id' => 'exercise_workouts#show'
     delete '/exercise_workouts/:id' => 'exercise_workouts#destroy'
 
     get '/carted_exercises' => 'carted_exercises#index'

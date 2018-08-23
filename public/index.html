@@ -235,9 +235,22 @@
             <p>{{ cartedExercise.exercise.target_muscle }}</p>
             <p>{{ cartedExercise.exercise.required_equipment }}</p>
             <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+            <!-- <button>Remove This Exercise (Nice to Have)</button> -->
           </div>
         </div>
-        <button class="btn btn-primary" v-on:click="createWorkout()">Create Workout</button>
+        <div>
+          <h3>Create Workout Below</h3>
+          <div class="form-group">
+            <label>Workout Name:</label>
+            <input type="text" class="form-control" v-model="name">
+          </div>
+          <div>
+            <label>Workout Goal:</label>
+            <input type="text" class="form-control" v-model="target_goal">
+          </div>
+          <button class="btn btn-primary" v-on:click="createWorkout()">Create Workout</button>
+          <!-- <button>Remove All Exercises (Nice to Have)</button> -->
+        </div>
       </div>
 
       <div v-for="exercise in exercises"> 
@@ -280,5 +293,21 @@
         </div>
       </div>
     </div>
+  </div>
+</template>
+
+<template id="workout-show-page">
+  <div class="vue-component">
+
+    <h1>{{ workout.name }}</h1>
+    
+    <div>
+      <p>Target Goal: {{ workout.target_goal }}</p>
+      <p>Status: {{ workout.status }}</p>
+      <div v-for="exercise in exercises">
+        <p>{{ exercise.title }}</p>
+      </div>
+    </div>
+
   </div>
 </template>

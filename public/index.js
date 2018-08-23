@@ -158,6 +158,40 @@ var ExercisePage = {
   computed: {}
 };
 
+var WorkoutShowPage = {
+  template: "#workout-show-page",
+  data: function() {
+    return {
+      workout: {
+        name: "",
+        target_goal: "",
+        status: "",
+      },
+      exercises: [
+        {
+          title: "",
+          exercise_type: "",
+          target_muscle: "",
+          required_equipment: "",
+          difficulty_level: "",
+          instructions: [],
+          images: []
+        }
+      ],
+    };
+  },
+  created: function() {
+    axios.get("/api/workouts/" + this.$route.params.id).then(function(response) {
+      this.exercise = response.data;
+      this.instructions = response.data.instructions;
+      this.images = response.data.images;
+      console.log(response.data);
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var UserHomePage = {
   template: "#user-home-page",
   data: function() {
@@ -211,6 +245,8 @@ var NewWorkoutPage = {
           }
         }
       ],
+      name: "",
+      target_goal: "",
       errors: []
     };
   },
@@ -245,6 +281,18 @@ var NewWorkoutPage = {
         this.cartedExercises = response.data;
       }.bind(this));
     },
+    createWorkout: function() {
+      console.log('in createWorkout function');
+      var workoutParams = {
+        name: this.name,
+        target_goal: this.target_goal,
+        exercises: this.cartedExercises
+      };
+      console.log(workoutParams);
+      axios.post("/api/workouts", workoutParams).then(function(response) {
+        router.push("/workouts/:id");
+      }.bind(this));
+    }
     // submit: function() {
     //   axios
     //     .post("/api/users", params)
@@ -271,6 +319,7 @@ var router = new VueRouter({
     { path: "/users", component: AllUsersPage },
     { path: "/exercises/:id", component: ExercisePage },
     { path: "/workouts/new", component: NewWorkoutPage }
+    { path: "/workouts/:id", component: WorkoutShowPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
