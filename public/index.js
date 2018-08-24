@@ -212,9 +212,17 @@ var UserHomePage = {
   created: function() {
     axios.get("/api/users/" + this.$route.params.id).then(function(response) {
       this.user = response.data;
+      console.log(response.data);
+      router.push("/users/" + response.data.id);
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    createFitGroup: function() {
+      // axios.get('/api/workouts').then(function(response) {
+      router.push("/fit_groups/new");
+      // }.bind(this));
+    }
+  },
   computed: {}
 };
 
@@ -291,24 +299,12 @@ var NewWorkoutPage = {
       };
       console.log(workoutParams);
       axios.post("/api/workouts", workoutParams).then(function(response) {
-        console.log('response.data below');
-        console.log(response.data);
-        
-        router.push("response.data.id");
+        console.log('response.data.id below');
+        console.log(response.data.id);
+
+        router.push("/workouts/" + response.data.id);
       }.bind(this));
     }
-    // submit: function() {
-    //   axios
-    //     .post("/api/users", params)
-    //     .then(function(response) {
-    //       router.push("/login");
-    //     })
-    //     .catch(
-    //       function(error) {
-    //         this.errors = error.response.data.errors;
-    //       }.bind(this)
-    //     );
-    // }
   }
 };
 
