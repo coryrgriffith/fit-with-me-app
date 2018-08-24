@@ -5,7 +5,10 @@ class Api::WorkoutsController < ApplicationController
   end
 
   def show
+    puts params
     @workout = Workout.find_by(id: params[:id])
+    puts @workout
+    puts @workout.id
     render "show.json.jbuilder"
   end
 

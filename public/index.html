@@ -299,13 +299,13 @@
 <template id="workout-show-page">
   <div class="vue-component">
 
-    <h1>{{ workout.name }}</h1>
+    <h1>{{ name }}</h1>
     
     <div>
-      <p>Target Goal: {{ workout.target_goal }}</p>
-      <p>Status: {{ workout.status }}</p>
+      <p>Target Goal: {{ target_goal }}</p>
+      <p>Status: {{ status }}</p>
       <div v-for="exercise in exercises">
-        <p>{{ exercise.title }}</p>
+        <p>Exercise: {{ exercise.title }}</p>
       </div>
     </div>
 

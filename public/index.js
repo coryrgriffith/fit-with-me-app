@@ -162,11 +162,9 @@ var WorkoutShowPage = {
   template: "#workout-show-page",
   data: function() {
     return {
-      workout: {
-        name: "",
-        target_goal: "",
-        status: "",
-      },
+      name: "",
+      target_goal: "",
+      status: "",
       exercises: [
         {
           title: "",
@@ -182,10 +180,12 @@ var WorkoutShowPage = {
   },
   created: function() {
     axios.get("/api/workouts/" + this.$route.params.id).then(function(response) {
-      this.exercise = response.data;
-      this.instructions = response.data.instructions;
-      this.images = response.data.images;
+      console.log('in workout show page create function');
       console.log(response.data);
+      this.name = response.data.name;
+      this.target_goal = response.data.target_goal;
+      this.status = response.data.status;
+      this.exercises = response.data.exercises;
     }.bind(this));
   },
   methods: {},
@@ -273,10 +273,11 @@ var NewWorkoutPage = {
         console.log(response.config.data);
         console.log('that was response.config.data');
         this.cartedExercises.push(...response.config.data);
-        // router.push("/workouts/new");
+        router.push("/workouts/new");
       }.bind(this));
 
       axios.get("/api/carted_exercises").then(function(response) {
+        console.log('in carted_exercises get request');
         console.log(response.data);
         this.cartedExercises = response.data;
       }.bind(this));
@@ -290,7 +291,10 @@ var NewWorkoutPage = {
       };
       console.log(workoutParams);
       axios.post("/api/workouts", workoutParams).then(function(response) {
-        router.push("/workouts/:id");
+        console.log('response.data below');
+        console.log(response.data);
+        
+        router.push("response.data.id");
       }.bind(this));
     }
     // submit: function() {
@@ -318,7 +322,7 @@ var router = new VueRouter({
     { path: "/exercises", component: AllExercisesPage },
     { path: "/users", component: AllUsersPage },
     { path: "/exercises/:id", component: ExercisePage },
-    { path: "/workouts/new", component: NewWorkoutPage }
+    { path: "/workouts/new", component: NewWorkoutPage },
     { path: "/workouts/:id", component: WorkoutShowPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
