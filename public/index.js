@@ -226,6 +226,28 @@ var UserHomePage = {
   computed: {}
 };
 
+var NewFitGroupPage = {
+  template: "#new-fitgroup-page",
+  data: function() {
+    return {
+      Name: [],
+    };
+  },
+  created: function() {},
+  methods: {
+    submit: function() {
+      var fitGroupParams = {
+        name: this.name
+      };
+      axios
+        .post("/api/fit_groups", fitGroupParams)
+        .then(function(response) {
+          router.push("/fit_groups/" + response.data.id);
+        }.bind(this));
+    }
+  }
+};
+
 var NewWorkoutPage = {
   template: "#new-workout-page",
   data: function() {
@@ -319,7 +341,8 @@ var router = new VueRouter({
     { path: "/users", component: AllUsersPage },
     { path: "/exercises/:id", component: ExercisePage },
     { path: "/workouts/new", component: NewWorkoutPage },
-    { path: "/workouts/:id", component: WorkoutShowPage }
+    { path: "/workouts/:id", component: WorkoutShowPage },
+    { path: "/fit_groups/new", component: NewFitGroupPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

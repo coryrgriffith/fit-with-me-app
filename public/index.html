@@ -314,3 +314,20 @@
 
   </div>
 </template>
+
+<template id="new-fitgroup-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Create a New Fit Group</h1>
+      <div class="form-group">
+        <label>Fit Group Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</template>
