@@ -43,7 +43,10 @@ class Api::FitGroupsController < ApplicationController
   end
 
   def update
-    
+    fit_group = FitGroup.find_by(id: params[:id])
+    fit_group.status = 'Adding Workout'
+    fit_group.save
+    p fit_group
   end
 
   def destroy

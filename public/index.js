@@ -295,7 +295,12 @@ var WorkoutsIndexPage = {
       this.selectedWorkout = inputWorkout;
     },
     addSelectedWorkoutToFitGroup: function(inputWorkout) {
-      
+      var workoutParams = inputWorkout;
+      console.log(workoutParams);
+      axios.post("/api/shared_workouts", workoutParams).then(function(response) {
+
+        router.push("/fit_groups/" + this.$route.params.id);
+      }.bind(this));
     }
   },
   computed: {}
@@ -331,10 +336,14 @@ var FitGroupShowPage = {
   },
   methods: {
     addWorkoutToFitGroup: function() {
-      axios.get("/api/workouts").then(function(response) {
+      axios.patch("/api/fit_groups/" + this.$route.params.id).then(function(response) {
         console.log('in workout add function');
         console.log(response.data);
-        router.push("/workouts");
+        axios.post("/api/shared_workouts").then(function(response) {
+          console.log('in second axios request inside addworkout function');
+          console.log(response.data);
+          router.push("/fit_groups/" + this.$route.params.id);
+        }.bind(this));
       }.bind(this));
     }
   },
