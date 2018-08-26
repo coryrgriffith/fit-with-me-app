@@ -230,7 +230,7 @@ var NewFitGroupPage = {
   template: "#new-fitgroup-page",
   data: function() {
     return {
-      Name: [],
+      name: [],
     };
   },
   created: function() {},
@@ -242,10 +242,44 @@ var NewFitGroupPage = {
       axios
         .post("/api/fit_groups", fitGroupParams)
         .then(function(response) {
+          console.log(response);
+          console.log(response.data);
           router.push("/fit_groups/" + response.data.id);
         }.bind(this));
     }
   }
+};
+
+var FitGroupShowPage = {
+  template: "#fitgroup-show-page",
+  data: function() {
+    return {
+      name: "",
+      captain: {
+        id: "",
+        first_name: "",
+        city: ""
+      },
+      status: "",
+      workouts: []
+    };
+  },
+  created: function() {
+    axios.get("/api/fit_groups/" + this.$route.params.id).then(function(response) {
+      console.log('in fit group show page create function');
+      console.log(response.data);
+
+      this.name = response.data.name;
+      this.captain = response.data.captain;
+      this.status = response.data.status;
+    }.bind(this));
+    axios.get('/api/captains/' + this.captain.id).then(function(response) {
+      console.log('response.data below');
+      this.captain = response.data;
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
 };
 
 var NewWorkoutPage = {
@@ -342,7 +376,8 @@ var router = new VueRouter({
     { path: "/exercises/:id", component: ExercisePage },
     { path: "/workouts/new", component: NewWorkoutPage },
     { path: "/workouts/:id", component: WorkoutShowPage },
-    { path: "/fit_groups/new", component: NewFitGroupPage }
+    { path: "/fit_groups/new", component: NewFitGroupPage },
+    { path: "/fit_groups/:id", component: FitGroupShowPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

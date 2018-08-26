@@ -1,0 +1,1 @@
+json.partial! 'fit_group', fit_group: @fit_group

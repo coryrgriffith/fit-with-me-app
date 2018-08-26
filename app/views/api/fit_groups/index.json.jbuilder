@@ -1,0 +1,1 @@
+json.array! @fit_groups, partial: 'fit_group', as: :fit_group

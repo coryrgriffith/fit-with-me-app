@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch '/workouts/:id' => 'workouts#update'
     delete '/workouts/:id' => 'workouts#destroy'
 
-    # both of the first routes gor to create in oreder to allow my app to redirect to the create action
+    # both of the first routes go to create in order to allow my app to redirect to the create action
     get '/exercise_workouts' => 'exercise_workouts#create'
     post '/exercise_workouts' => 'exercise_workouts#create'
     # get '/exercise_workouts/:id' => 'exercise_workouts#show'
@@ -35,6 +35,16 @@ Rails.application.routes.draw do
     get '/carted_exercises/:id' => 'carted_exercises#show'
     post '/carted_exercises' => 'carted_exercises#create'
     delete '/carted_exercises/:id' => 'carted_exercises#destroy'
+
+    # both of the first routes go to create in order to allow my app to redirect to the create action
+    get '/captains' => 'captains#create'
+    get '/captains/all' => 'captains#index'
+    post '/captains' => 'captains#create'
+    get '/captains/:id' => 'captains#show'
+
+    # both of the first routes go to create in order to allow my app to redirect to the create action
+    get '/user_fit_groups' => 'user_fit_groups#create'
+    post '/user_fit_groups' => 'user_fit_groups#create'
 
   end
 end

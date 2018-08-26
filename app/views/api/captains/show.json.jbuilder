@@ -1,0 +1,1 @@
+json.partial! 'captain', captain: @captain
