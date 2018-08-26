@@ -271,11 +271,11 @@ var FitGroupShowPage = {
 
       this.name = response.data.name;
       this.captain = response.data.captain;
+      console.log(this.captain);
       this.status = response.data.status;
-    }.bind(this));
-    axios.get('/api/captains/' + this.captain.id).then(function(response) {
-      console.log('response.data below');
-      this.captain = response.data;
+      axios.get("/api/captains/" + this.captain.id).then(function(response) {
+        this.captain = response.data;
+      }.bind(this));
     }.bind(this));
   },
   methods: {},

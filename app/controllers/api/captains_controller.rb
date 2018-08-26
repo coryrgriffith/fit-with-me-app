@@ -17,10 +17,12 @@ class Api::CaptainsController < ApplicationController
   end
 
   def show
-    
+    @captain = Captain.find_by(id: params[:id])
+    render "show.json.jbuilder"
   end
 
   def index
-
+    @captains = Captain.all
+    render "index.json.jbuilder"
   end
 end
