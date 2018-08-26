@@ -341,10 +341,61 @@
       <p>Captain: {{ captain.first_name }}</p>
       <p>City: {{captain.city }}</p>
       <p>Status: {{ status }}</p>
-      <!-- <div v-for="exercise in exercises">
-        <p>Exercise: {{ exercise.title }}</p>
-      </div> -->
+      
+      <div>
+        <h3>Workouts for this Fit Group</h3>
+        <div v-for="workout in workouts">
+          <p>Workout: {{ workout.name }}</p>
+        </div>
+        <button class="btn btn-primary" v-on:click="addWorkoutToFitGroup()">Add a Workout</button>
+      </div>
+
     </div>
+
+  </div>
+</template>
+
+<template id="all-workouts-page">
+  <div class="vue-component">
+    <div v-for="workout in workouts"> 
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ workout.name }}</h5>
+            <p class="card-description">Target Goal: {{ workout.target_goal }}</p>
+            <button v-on:click="changeWorkout(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#workoutInfoModal">See Exercise Info</button>
+            <!-- add button to add workout to fit group here -->
+            <button v-on:click="addSelectedWorkoutToFitGroup(workout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="workoutInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Workout Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h1>{{ selectedWorkout.name }}</h1>
+              <p>{{ selectedWorkout.target_goal }}</p>
+              <div v-for="exercise in selectedWorkout.exercises">
+                <p>Exercise: {{ exercise.title }}</p>
+                <p>Target Muscle: {{ exercise.target_muscle }}</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- use button beleow to add workout to fit group -->
+              <button v-on:click="addSelectedWorkoutToFitGroup(selectedWorkout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
   </div>
 </template>

@@ -250,6 +250,57 @@ var NewFitGroupPage = {
   }
 };
 
+var WorkoutsIndexPage = {
+  template: "#all-workouts-page",
+  data: function() {
+    return {
+      workouts: [],
+      exercises: [
+        {
+          title: "",
+          exercise_type: "",
+          target_muscle: "",
+          required_equipment: "",
+          difficulty_level: "",
+          instructions: [],
+          images: []
+        }
+      ],
+      selectedWorkout: {
+        name: "",
+        target_goal: "",
+        exercises: [
+          {
+            title: "",
+            exercise_type: "",
+            target_muscle: "",
+            required_equipment: "",
+            difficulty_level: "",
+            instructions: [],
+            images: []
+          }
+        ]
+      }
+    };
+  },
+  created: function() {
+    axios.get('/api/workouts').then(function(response) {
+      console.log('in workout index create action');
+      console.log(response.data);
+      this.workouts = response.data;
+    }.bind(this));
+  },
+  methods: {
+    changeWorkout: function(inputWorkout) {
+      this.selectedWorkout = inputWorkout;
+    },
+    addSelectedWorkoutToFitGroup: function(inputWorkout) {
+      
+    }
+  },
+  computed: {}
+};
+
 var FitGroupShowPage = {
   template: "#fitgroup-show-page",
   data: function() {
@@ -278,7 +329,15 @@ var FitGroupShowPage = {
       }.bind(this));
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    addWorkoutToFitGroup: function() {
+      axios.get("/api/workouts").then(function(response) {
+        console.log('in workout add function');
+        console.log(response.data);
+        router.push("/workouts");
+      }.bind(this));
+    }
+  },
   computed: {}
 };
 
@@ -375,6 +434,7 @@ var router = new VueRouter({
     { path: "/users", component: AllUsersPage },
     { path: "/exercises/:id", component: ExercisePage },
     { path: "/workouts/new", component: NewWorkoutPage },
+    { path: "/workouts", component: WorkoutsIndexPage },
     { path: "/workouts/:id", component: WorkoutShowPage },
     { path: "/fit_groups/new", component: NewFitGroupPage },
     { path: "/fit_groups/:id", component: FitGroupShowPage }
