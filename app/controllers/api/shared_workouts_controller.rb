@@ -1,5 +1,9 @@
 class Api::SharedWorkoutsController < ApplicationController
   def create
+    p "*" * 50
+    p params
+    p "*" * 50
+
     fit_group = FitGroup.find_by(status: 'Adding Workout')
     shared_workout = SharedWorkout.new(workout_id: params[:id], fit_group_id: fit_group.id)
     shared_workout.status = 'Pending'
@@ -26,5 +30,7 @@ class Api::SharedWorkoutsController < ApplicationController
     fit_group.status = 'Active'
     shared_workout.save
     fit_group.save
+
+    redirect_to "/api/fit_groups/#{fit_group.id}"
   end
 end

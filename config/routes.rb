@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     get '/user_fit_groups' => 'user_fit_groups#create'
     post '/user_fit_groups' => 'user_fit_groups#create'
 
+    # both of the first routes go to create in order to allow my app to redirect to the create action
+    get '/shared_workouts' => 'shared_workouts#create'
     post '/shared_workouts' => 'shared_workouts#create'
 
   end

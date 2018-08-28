@@ -1,6 +1,12 @@
 class Api::WorkoutsController < ApplicationController
   def index
-    @workouts = Workout.all
+    # while on a specific Fit Group Page
+    if params[:filtered] == 'true'
+      @workouts = Workout.where(id: SharedWorkout.where(fit_group_id: FitGroup.find_by(id: params[:id])))
+    else 
+    # while looking at all existing workouts 
+      @workouts = Workout.all
+    end
     render "index.json.jbuilder"
   end
 

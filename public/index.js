@@ -284,6 +284,10 @@ var WorkoutsIndexPage = {
     };
   },
   created: function() {
+    console.log('workout index create function');
+    // console.log('params below');
+    // console.log();
+
     axios.get('/api/workouts').then(function(response) {
       console.log('in workout index create action');
       console.log(response.data);
@@ -298,8 +302,9 @@ var WorkoutsIndexPage = {
       var workoutParams = inputWorkout;
       console.log(workoutParams);
       axios.post("/api/shared_workouts", workoutParams).then(function(response) {
-
-        router.push("/fit_groups/" + this.$route.params.id);
+        console.log('response.data below');
+        console.log(response);
+        router.push("/fit_groups/" + response.data.id);
       }.bind(this));
     }
   },
@@ -310,6 +315,7 @@ var FitGroupShowPage = {
   template: "#fitgroup-show-page",
   data: function() {
     return {
+      id: "",
       name: "",
       captain: {
         id: "",
@@ -324,25 +330,27 @@ var FitGroupShowPage = {
     axios.get("/api/fit_groups/" + this.$route.params.id).then(function(response) {
       console.log('in fit group show page create function');
       console.log(response.data);
-
+      this.id = response.data.id;
       this.name = response.data.name;
       this.captain = response.data.captain;
       console.log(this.captain);
       this.status = response.data.status;
+      this.workouts = response.data.workouts;
       axios.get("/api/captains/" + this.captain.id).then(function(response) {
         this.captain = response.data;
       }.bind(this));
+      // axios.get("/api/workouts/?filtered=true").then(function(response) {
+      //   console.log('in workout axios request');
+      //   this.workouts = response.data;
+      // }.bind(this));
     }.bind(this));
   },
   methods: {
     addWorkoutToFitGroup: function() {
-      axios.patch("/api/fit_groups/" + this.$route.params.id).then(function(response) {
-        console.log('in workout add function');
-        console.log(response.data);
-        axios.post("/api/shared_workouts").then(function(response) {
-          console.log('in second axios request inside addworkout function');
-          console.log(response.data);
-          router.push("/fit_groups/" + this.$route.params.id);
+      axios.patch("/api/fit_groups/" + this.id).then(function(response) {
+
+        axios.get("/api/workouts").then(function(response) {
+          router.push("/workouts");
         }.bind(this));
       }.bind(this));
     }
