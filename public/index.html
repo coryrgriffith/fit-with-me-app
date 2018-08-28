@@ -94,9 +94,10 @@
 <template id="user-home-page">
   <div class="vue-component">
 
-    <h1>Welcome to Your Personal Home Page</h1>
+    <h1>{{ message }}</h1>
     
     <div>
+      <h3>User Information</h3>
       <p>Username: {{ user.username }}</p>
       <p>First Name: {{ user.first_name }}</p>
       <p>Last Name: {{ user.last_name }}</p>
@@ -105,6 +106,13 @@
       <p>Weight: {{ user.weight }}</p>
       <p>City: {{ user.city }}</p>
       <p>Email: {{ user.email }}</p>
+    </div>
+    <div>
+      <h3>Fit Groups</h3>
+      <div v-for="fitGroup in fitGroups">
+        <p>Name: {{ fitGroup.name }}</p>
+        <p>ID: {{ fitGroup.id }}</p>
+      </div>
     </div>
     <div>
       <button class="btn btn-primary" v-on:click="createFitGroup()">Create A New Fit Group</button>

@@ -196,7 +196,7 @@ var UserHomePage = {
   template: "#user-home-page",
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Welcome to Your Personal Home Page",
       user: {
         username: "",
         first_name: "",
@@ -206,14 +206,22 @@ var UserHomePage = {
         weight: "",
         city: "",
         email: ""
-      }
+      },
+      fitGroups: [
+        {
+          name: "",
+          id: ""
+        }
+      ]
     };
   },
   created: function() {
     axios.get("/api/users/" + this.$route.params.id).then(function(response) {
       this.user = response.data;
       console.log(response.data);
-      router.push("/users/" + response.data.id);
+      this.fitGroups = response.data.fit_groups;
+      console.log('this.fitGroups below');
+      console.log(this.fitGroups);
     }.bind(this));
   },
   methods: {
