@@ -230,6 +230,9 @@ var UserHomePage = {
       // axios.get('/api/workouts').then(function(response) {
       router.push("/fit_groups/new");
       // }.bind(this));
+    },
+    joinExistingFitGroup: function() {
+      router.push("/fit_groups");
     }
   },
   computed: {}
