@@ -409,3 +409,24 @@
 
   </div>
 </template>
+
+<template id="all-fitgroups-page">
+  <div class="vue-component">
+    <div v-for="fitGroup in fitGroups"> 
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ fitGroup.name }}</h5>
+            <h6>Fit Group Workouts</h6>
+            <div v-for="workout in fitGroup.workouts">
+              <p>Workout Name: {{ workout.name }}</p>
+              <p>Workout Goal: {{ workout.target_goal }}</p>
+            </div>
+            <!-- add button to add workout to fit group here -->
+            <button v-on:click="joinFitGroup(fitGroup)" class="btn btn-secondary">Join Fit Group</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

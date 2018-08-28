@@ -222,6 +222,7 @@ var UserHomePage = {
       this.fitGroups = response.data.fit_groups;
       console.log('this.fitGroups below');
       console.log(this.fitGroups);
+      router.push("/users/" + this.user.id);
     }.bind(this));
   },
   methods: {
@@ -313,6 +314,64 @@ var WorkoutsIndexPage = {
         console.log('response.data below');
         console.log(response);
         router.push("/fit_groups/" + response.data.id);
+      }.bind(this));
+    }
+  },
+  computed: {}
+};
+
+var FitGroupsIndexPage = {
+  template: "#all-fitgroups-page",
+  data: function() {
+    return {
+      fitGroups: [
+        {
+          name:  "",
+          id: "",
+          status: "",
+          workouts: [
+            {
+              name: "",
+              target_goal: ""
+            }
+          ],
+        }
+      ],
+      exercises: [
+        {
+          title: "",
+          exercise_type: "",
+          target_muscle: "",
+          required_equipment: "",
+          difficulty_level: "",
+          instructions: [],
+          images: []
+        }
+      ]
+    };
+  },
+  created: function() {
+    console.log('fit group index create function');
+    // console.log('params below');
+    // console.log();
+
+    axios.get('/api/fit_groups').then(function(response) {
+      console.log('in fit group index create axios action');
+      console.log(response.data);
+      this.fitGroups = response.data;
+      // this.workouts = response.data.workouts;
+    }.bind(this));
+  },
+  methods: {
+    joinFitGroup: function(inputFitGroup) {
+      console.log('in joinfitgroup function');
+      console.log(inputFitGroup.id);
+      console.log(this.$route.params.id);
+      var userFitGoupParams = {
+        fit_group_id: inputFitGroup.id
+      };
+      axios.post("/api/user_fit_groups", userFitGoupParams).then(function(response) {
+        router.push("/users/" + this.$route.params.id);
       }.bind(this));
     }
   },
@@ -462,7 +521,8 @@ var router = new VueRouter({
     { path: "/workouts", component: WorkoutsIndexPage },
     { path: "/workouts/:id", component: WorkoutShowPage },
     { path: "/fit_groups/new", component: NewFitGroupPage },
-    { path: "/fit_groups/:id", component: FitGroupShowPage }
+    { path: "/fit_groups/:id", component: FitGroupShowPage },
+    { path: "/fit_groups", component: FitGroupsIndexPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
