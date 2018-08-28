@@ -112,6 +112,7 @@
       <div v-for="fitGroup in fitGroups">
         <p>Name: {{ fitGroup.name }}</p>
         <p>ID: {{ fitGroup.id }}</p>
+        <a v-bind:href="'/#/fit_groups/' + fitGroup.id" class="btn btn-primary">Go To Fit Group Page</a>
       </div>
     </div>
     <div>
