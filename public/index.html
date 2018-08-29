@@ -352,17 +352,47 @@
       <p>Captain: {{ captain.first_name }}</p>
       <p>City: {{captain.city }}</p>
       <p>Status: {{ status }}</p>
+      <h4>Fit Group Members</h4>
+      <div v-for="user in users">
+        <p>Name: {{ user.first_name }}</p>
+        <p>Username: {{ user.username }}</p>
+      </div>
       
       <div>
         <h3>Workouts for this Fit Group</h3>
         <div v-for="workout in workouts">
           <p>Workout: {{ workout.name }}</p>
+          <button v-on:click="trackExercises(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackWorkoutModal">Track Exercise in This Workout</button>
         </div>
         <button class="btn btn-primary" v-on:click="addWorkoutToFitGroup()">Add a Workout</button>
       </div>
 
     </div>
 
+    <div class="modal fade" id="trackWorkoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Track Exercises in this Workout Here</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h1>{{ selectedWorkout.name }}</h1>
+              <div v-for="exercise in selectedExercises">
+                <p>Exercise: {{ exercise.title }}</p>
+               <!--  <p>Status: {{ exercise.status }}</p> -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- use button beleow to add workout to fit group -->
+              <button v-on:click="addSelectedWorkoutToFitGroup(selectedWorkout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -406,7 +436,7 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
 
   </div>
 </template>

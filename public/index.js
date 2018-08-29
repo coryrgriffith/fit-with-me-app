@@ -392,8 +392,23 @@ var FitGroupShowPage = {
         first_name: "",
         city: ""
       },
+      users: [
+        {
+          username: "",
+          first_name: ""
+        }
+      ],
       status: "",
-      workouts: []
+      workouts: [],
+      selectedWorkout: {
+        name: "",
+      },
+      selectedExercises: [
+        {
+          title: "",
+          // status: ""
+        }
+      ]
     };
   },
   created: function() {
@@ -406,6 +421,7 @@ var FitGroupShowPage = {
       console.log(this.captain);
       this.status = response.data.status;
       this.workouts = response.data.workouts;
+      this.users = response.data.users;
       axios.get("/api/captains/" + this.captain.id).then(function(response) {
         this.captain = response.data;
       }.bind(this));
@@ -422,6 +438,15 @@ var FitGroupShowPage = {
         axios.get("/api/workouts").then(function(response) {
           router.push("/workouts");
         }.bind(this));
+      }.bind(this));
+    },
+    trackExercises: function(inputWorkout) {
+      // this.selectedWorkout = inputWorkout;
+      axios.get("/api/workouts/" + inputWorkout.id).then(function(response) {
+        console.log('in trackExercises function');
+        console.log(response.data.exercises);
+        this.selectedWorkout = response.data;
+        this.selectedExercises = response.data.exercises;
       }.bind(this));
     }
   },
