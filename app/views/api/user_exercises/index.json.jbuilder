@@ -1,0 +1,1 @@
+json.array! @user_exercises, partial: 'user_exercise', as: :user_exercise

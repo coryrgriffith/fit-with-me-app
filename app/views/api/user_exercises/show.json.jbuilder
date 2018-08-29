@@ -1,0 +1,1 @@
+json.partial! 'user_exercise', user_exercise: @user_exercise

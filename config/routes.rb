@@ -50,5 +50,9 @@ Rails.application.routes.draw do
     get '/shared_workouts' => 'shared_workouts#create'
     post '/shared_workouts' => 'shared_workouts#create'
 
+    get '/user_exercises' => 'user_exercises#index'
+    get '/user_exercises/:id' => 'user_exercises#show'
+    patch '/user_exercises/:id' => 'user_exercises#update'
+
   end
 end

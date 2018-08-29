@@ -406,7 +406,7 @@ var FitGroupShowPage = {
       selectedExercises: [
         {
           title: "",
-          // status: ""
+          status: ""
         }
       ]
     };
@@ -444,9 +444,18 @@ var FitGroupShowPage = {
       // this.selectedWorkout = inputWorkout;
       axios.get("/api/workouts/" + inputWorkout.id).then(function(response) {
         console.log('in trackExercises function');
-        console.log(response.data.exercises);
         this.selectedWorkout = response.data;
-        this.selectedExercises = response.data.exercises;
+        var userExerciseParams = {
+          fit_group_id: this.$route.params.id,
+          workout_id: inputWorkout.id
+        };
+        console.log(userExerciseParams);
+        axios.get("/api/user_exercises", {params: userExerciseParams}).then(function(response) {
+          console.log('response.data below');
+          console.log(response.data);
+
+          this.selectedExercises = response.data;
+        }.bind(this));
       }.bind(this));
     }
   },
