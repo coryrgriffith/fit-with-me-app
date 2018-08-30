@@ -457,6 +457,11 @@ var FitGroupShowPage = {
           this.selectedExercises = response.data;
         }.bind(this));
       }.bind(this));
+    },
+    completeExercise: function(inputExercise) {
+      axios.patch("/api/user_exercises/" + inputExercise.id, inputExercise).then(function(response) {
+        this.selectedExercises = response.data;
+      }.bind(this));
     }
   },
   computed: {}

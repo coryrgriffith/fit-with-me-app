@@ -383,6 +383,7 @@
               <div v-for="exercise in selectedExercises">
                 <p>Exercise: {{ exercise.exercise.title }}</p>
                 <p>Status: {{ exercise.completed }}</p>
+                <button v-on:click="completeExercise(exercise)">Mark Exercise Complete</button>
               </div>
             </div>
             <div class="modal-footer">
