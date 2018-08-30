@@ -215,6 +215,7 @@ var UserHomePage = {
       },
       friends: [
         {
+          id: "",
           username: "",
           first_name: "",
           last_name: ""
@@ -239,15 +240,19 @@ var UserHomePage = {
   },
   methods: {
     createFitGroup: function() {
-      // axios.get('/api/workouts').then(function(response) {
       router.push("/fit_groups/new");
-      // }.bind(this));
     },
     joinExistingFitGroup: function() {
       router.push("/fit_groups");
     },
     addFriend: function() {
       router.push("/users");
+    },
+    viewFriendProfile: function(inputFriend) {
+      axios.get("/api/users/" + inputFriend.id + "?friend=true").then(function(response) {
+        this.user = response.data;
+        router.push("/users/" + response.data.id);
+      }.bind(this));
     }
   },
   computed: {}

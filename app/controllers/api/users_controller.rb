@@ -1,6 +1,10 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = current_user
+    if params[:friend] == 'true'
+      @user = User.find_by(id: params[:id])
+    else
+      @user = current_user
+    end
     render "show.json.jbuilder"
   end
 
