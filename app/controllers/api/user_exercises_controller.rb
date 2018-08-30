@@ -4,6 +4,7 @@ class Api::UserExercisesController < ApplicationController
   def index
     p params
     @user_exercises = UserExercise.where(user_id: current_user.id).where(fit_group_id: params[:fit_group_id]).where(workout_id: params[:workout_id])
+    p @user_exercises
     render "index.json.jbuilder"
   end
 

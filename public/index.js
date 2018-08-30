@@ -406,7 +406,7 @@ var FitGroupShowPage = {
       selectedExercises: [
         {
           title: "",
-          status: ""
+          completed: ""
         }
       ]
     };
