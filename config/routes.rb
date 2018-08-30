@@ -54,5 +54,7 @@ Rails.application.routes.draw do
     get '/user_exercises/:id' => 'user_exercises#show'
     patch '/user_exercises/:id' => 'user_exercises#update'
 
+    post '/friendships' => 'friendships#create'
+
   end
 end

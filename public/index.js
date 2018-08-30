@@ -12,7 +12,13 @@ var AllUsersPage = {
       this.users = response.data;
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    createFriendship: function(inputFriend) {
+      axios.post("/api/friendships", inputFriend).then(function(response) {
+        router.push("/users/" + response.data.id);
+      }.bind(this));
+    }
+  },
   computed: {}
 };
 
@@ -207,6 +213,13 @@ var UserHomePage = {
         city: "",
         email: ""
       },
+      friends: [
+        {
+          username: "",
+          first_name: "",
+          last_name: ""
+        }
+      ],
       fitGroups: [
         {
           name: "",
@@ -220,8 +233,7 @@ var UserHomePage = {
       this.user = response.data;
       console.log(response.data);
       this.fitGroups = response.data.fit_groups;
-      console.log('this.fitGroups below');
-      console.log(this.fitGroups);
+      this.friends = response.data.friends;
       router.push("/users/" + this.user.id);
     }.bind(this));
   },
@@ -233,6 +245,9 @@ var UserHomePage = {
     },
     joinExistingFitGroup: function() {
       router.push("/fit_groups");
+    },
+    addFriend: function() {
+      router.push("/users");
     }
   },
   computed: {}
