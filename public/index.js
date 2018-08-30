@@ -251,6 +251,7 @@ var UserHomePage = {
     viewFriendProfile: function(inputFriend) {
       axios.get("/api/users/" + inputFriend.id + "?friend=true").then(function(response) {
         this.user = response.data;
+        this.message = "Friend Profile Page";
         router.push("/users/" + response.data.id);
       }.bind(this));
     }
