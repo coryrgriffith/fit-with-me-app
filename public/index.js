@@ -213,6 +213,16 @@ var UserHomePage = {
         city: "",
         email: ""
       },
+      currentUser: {
+        username: "",
+        first_name: "",
+        last_name: "",
+        age: "",
+        height: "",
+        weight: "",
+        city: "",
+        email: ""
+      },
       friends: [
         {
           id: "",
@@ -231,6 +241,7 @@ var UserHomePage = {
   },
   created: function() {
     axios.get("/api/users/" + this.$route.params.id).then(function(response) {
+      this.currentUser = response.data;
       this.user = response.data;
       console.log(response.data);
       this.fitGroups = response.data.fit_groups;
