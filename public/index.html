@@ -116,6 +116,8 @@
         <p>First Name: {{ friend.first_name }}</p>
         <p>Last Name: {{ friend.last_name }}</p>
         <button v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="viewFriendProfile(friend)">View Profile</button>
+        <button v-else-if="message === 'Friend Profile Page'" v-on:click="addThisFriend(friend)">Add Friend</button>
+        <!-- <button v-else-if="message === 'Friend Profile Page'" v-on:click="addThisFriend(friend)">Add Friend</button> -->
       </div>
     </div>
     <div>

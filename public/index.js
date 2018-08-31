@@ -268,11 +268,13 @@ var UserHomePage = {
       }.bind(this));
     },
     editProfile: function() {
-      // axios.patch("/users/" + this.$route.params.id).then(function(response) {
-      //   this.user = response.data;
-      // }.bind(this));
       console.log("edit function");
       router.push("/users/" + this.$route.params.id + "/edit");
+    },
+    addThisFriend: function(inputFriend) {
+      axios.post("/api/friendships", inputFriend).then(function(response) {
+        router.push("/users/" + response.data.id);
+      }.bind(this));
     }
   },
   computed: {}
