@@ -263,6 +263,7 @@ var UserHomePage = {
         this.user = response.data;
         this.fitGroups = response.data.fit_groups;
         this.friends = response.data.friends;
+        this.message = "Welcome to Your Personal Home Page";
         router.push("/users/" + this.user.id);
       }.bind(this));
     }
