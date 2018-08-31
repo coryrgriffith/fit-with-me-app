@@ -266,6 +266,56 @@ var UserHomePage = {
         this.message = "Welcome to Your Personal Home Page";
         router.push("/users/" + this.user.id);
       }.bind(this));
+    },
+    editProfile: function() {
+      // axios.patch("/users/" + this.$route.params.id).then(function(response) {
+      //   this.user = response.data;
+      // }.bind(this));
+      console.log("edit function");
+      router.push("/users/" + this.$route.params.id + "/edit");
+    }
+  },
+  computed: {}
+};
+
+var UserEditPage = {
+  template: "#user-edit-page",
+  data: function() {
+    return {
+      message: "Edit Your Profile Information Below",
+      user: {
+        username: "",
+        first_name: "",
+        last_name: "",
+        age: "",
+        height: "",
+        weight: "",
+        city: "",
+        email: ""
+      }
+    };
+  },
+  created: function() {
+    axios.get("/api/users/" + this.$route.params.id).then(function(response) {
+      this.user = response.data;
+    }.bind(this));
+  },
+  methods: {
+    saveEditsToProfile: function() {
+      var editParams = {
+        username: this.user.username,
+        first_name: this.user.first_name,
+        last_name: this.user.last_name, 
+        age: this.user.age, 
+        height: this.user.height, 
+        weight: this.user.weight, 
+        city: this.user.city, 
+        email: this.user.email
+      };
+      axios.patch("/api/users/" + this.$route.params.id, editParams).then(function(response) {
+        this.user = response.data;
+        router.push("/users/" + this.user.id);
+      }.bind(this));
     }
   },
   computed: {}
@@ -597,7 +647,8 @@ var router = new VueRouter({
     { path: "/workouts/:id", component: WorkoutShowPage },
     { path: "/fit_groups/new", component: NewFitGroupPage },
     { path: "/fit_groups/:id", component: FitGroupShowPage },
-    { path: "/fit_groups", component: FitGroupsIndexPage }
+    { path: "/fit_groups", component: FitGroupsIndexPage },
+    { path: "/users/:id/edit", component: UserEditPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
