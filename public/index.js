@@ -250,11 +250,20 @@ var UserHomePage = {
     },
     viewFriendProfile: function(inputFriend) {
       axios.get("/api/users/" + inputFriend.id + "?friend=true").then(function(response) {
+        console.log(response.data);
         this.user = response.data;
         this.fitGroups = response.data.fit_groups;
         this.friends = response.data.friends;
         this.message = "Friend Profile Page";
         router.push("/users/" + response.data.id);
+      }.bind(this));
+    },
+    returnToHomePage: function() {
+      axios.get("/api/users/" + this.$route.params.id).then(function(response) {
+        this.user = response.data;
+        this.fitGroups = response.data.fit_groups;
+        this.friends = response.data.friends;
+        router.push("/users/" + this.user.id);
       }.bind(this));
     }
   },
