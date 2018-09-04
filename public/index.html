@@ -91,7 +91,7 @@
             <div class="header-inner container">
               <!--branding/logo -->
               <div class="header-brand">
-                <a class="header-brand-text" href="index.html" title="Home">
+                <a class="header-brand-text" href="/#/" title="Home">
                   <h1 class="h2">
                     <span class="header-brand-text-alt">Fit</span>With Me
                   </h1>
@@ -116,7 +116,7 @@
                     
                     <!-- Personal Home Page -->
                     <li class="nav-item">
-                      <a href="#" class="nav-link" id="pages-drop">Personal Profile</a> 
+                      <a v-bind:href="'/#/users/' + 1" class="nav-link" id="pages-drop">Personal Profile</a> 
                     </li>
                     
                     <!-- Fit Groups -->
@@ -148,24 +148,30 @@
                           <div class="tab-pane active show menu-tab-1" role="tabpanel">
                             <div class="row text-center">
                               <div class="col-lg-4 py-2">
-                                <i class="fa fa-tachometer-alt icon-3x op-6"></i> 
-                                <h5 class="mt-2">
-                                  Sign Up
-                                </h5>
+                                <a href="/#/signup">
+                                  <i class="fa fa-tachometer-alt icon-3x op-6"></i> 
+                                  <h5 class="mt-2">
+                                    Sign Up
+                                  </h5>
+                                </a>
                                 <p class="text-sm mb-0">Create your new account and get started with Fit With Me.</p>
                               </div>
                               <div class="col-lg-4 py-2">
-                                <i class="fa fa-wrench icon-3x op-6"></i> 
-                                <h5 class="mt-2">
-                                  Sign In
-                                </h5>
+                                <a href="/#/login">
+                                  <i class="fa fa-wrench icon-3x op-6"></i> 
+                                  <h5 class="mt-2">
+                                    Sign In
+                                  </h5>
+                                </a>
                                 <p class="text-sm mb-0">Log in to an existing account.</p>
                               </div>
                               <div class="col-lg-4 py-2">
-                                <i class="fa fa-rocket icon-3x op-6"></i> 
-                                <h5 class="mt-2">
-                                  Log Out
-                                </h5>
+                                <a href="/#/logout">
+                                  <i class="fa fa-rocket icon-3x op-6"></i> 
+                                  <h5 class="mt-2">
+                                    Log Out
+                                  </h5>
+                                </a>
                                 <p class="text-sm mb-0">Log out of your account.</p>
                               </div>
                             </div>
@@ -237,18 +243,7 @@
       </footer>
       
       <!-- Style switcher - demo only - @todo: remove in production -->
-      <div class="colour-switcher">
-        <a href="#" class="colour-switcher-toggle" data-toggle="class" data-target=".colour-switcher"> <i class="fa fa-paint-brush"></i> </a>
-        <h5 class="text-uppercase my-0">
-          Theme Colours
-        </h5>
-        <hr />
-        <div class="theme-colours"> <a href="#green" class="blue active" data-toggle="tooltip" data-placement="right" data-original-title="Green (Default)">Green</a> <a href="#red" class="red" data-toggle="tooltip" data-placement="right" data-original-title="Red">Red</a> <a href="#blue" class="blue" data-toggle="tooltip" data-placement="right" data-original-title="Blue">Blue</a> <a href="#purple" class="purple" data-toggle="tooltip" data-placement="right" data-original-title="Purple">Purple</a> <a href="#pink" class="pink" data-toggle="tooltip" data-placement="right" data-original-title="Pink">Pink</a> <a href="#orange" class="orange" data-toggle="tooltip" data-placement="right" data-original-title="Orange">Orange</a> <a href="#lime" class="lime" data-toggle="tooltip" data-placement="right" data-original-title="Lime">Lime</a> <a href="#blue-dark" class="blue-dark" data-toggle="tooltip" data-placement="right" data-original-title="Blue-dark">Blue-dark</a> <a href="#red-dark" class="red-dark" data-toggle="tooltip" data-placement="right" data-original-title="Red-dark">Red-dark</a> <a href="#brown" class="brown" data-toggle="tooltip" data-placement="right" data-original-title="Brown">Brown</a> <a href="#cyan-dark" class="cyan-dark" data-toggle="tooltip" data-placement="right" data-original-title="Cyan-dark">Cyan-dark</a> <a href="#yellow" class="yellow" data-toggle="tooltip" data-placement="right" data-original-title="Yellow">Yellow</a> <a href="#slate" class="slate" data-toggle="tooltip" data-placement="right" data-original-title="Slate">Slate</a> <a href="#olive" class="olive" data-toggle="tooltip" data-placement="right" data-original-title="Olive">Olive</a> <a href="#teal" class="teal" data-toggle="tooltip" data-placement="right" data-original-title="Teal">Teal</a> <a href="#green-bright" class="green-bright" data-toggle="tooltip" data-placement="right" data-original-title="Green-bright">Green-bright</a> </div>
-        <hr />
-        <p class="text-xs text-muted">Cookies are NOT enabled so colour selection is not persistent.</p>
-        <p class="text-xs my-0"><a href="index.html">Back to main homepage</a></p>
-        <p class="text-xs my-0"><a href="intro.html">Back to intro page</a></p>
-      </div>
+      
       <!--Hidden elements - excluded from jPanel Menu on mobile-->
       <div class="hidden-elements js-off-canvas-exclude">
         <!--@modal - signup modal-->
@@ -287,7 +282,7 @@
                     <input type="text" class="form-control" id="signup-last-name" placeholder="Last name">
                   </div>
                   <div class="form-group">
-                    <label class="sr-only" for="signup-username">Userame</label>
+                    <label class="sr-only" for="signup-username">Username</label>
                     <input type="text" class="form-control" id="signup-username" placeholder="Username">
                   </div>
                   <div class="form-group">
@@ -500,6 +495,217 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</template>
+
+<template id="login-page">
+  <div class="vue-component">
+    <div class="container">
+      <form class="form-login form-wrapper form-narrow">
+        <h3 class="title-divider">
+          <span>Login</span> 
+          <small class="mt-4">Not signed up? <a href="/#/signup">Sign up here</a>.</small>
+        </h3>
+        <div class="form-group">
+          <label class="sr-only" for="login-email-page">Email</label>
+          <input type="email" id="login-email-page" class="form-control email" placeholder="Email" v-model="email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="login-password-page">Password</label>
+          <input type="password" id="login-password-page" class="form-control password" placeholder="Password" v-model="password">
+        </div>
+        <button type="button" class="btn btn-primary" v-on:click="submit()">Login</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id="signup-page">
+  <div class="vue-component">
+    <div class="container">
+      <form class="form-login form-wrapper form-medium" role="form">
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <h3 class="title-divider">
+          <span>Sign Up</span> 
+          <small class="mt-4">Already signed up? <a href="/#/login">Login here</a>.</small>
+        </h3>
+        <h5>
+          Account Information
+        </h5>
+        <div class="form-group">
+          <label class="sr-only" for="signup-username-page">Username</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="Username" v-model="username">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-first-name-page">First Name</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="First name" v-model="first_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-last-name-page">Last Name</label>
+          <input type="text" class="form-control" id="signup-last-name-page" placeholder="Last name" v-model="last_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-age-page">Age</label>
+          <input type="text" class="form-control" id="signup-username-page" placeholder="Age" v-model="age">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-height-page">Height (in inches)</label>
+          <input type="text" class="form-control" id="signup-height-page" placeholder="Height (in inches)" v-model="height">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-weight-page">Weight (in pounds)</label>
+          <input type="text" class="form-control" id="signup-weight-page" placeholder="Weight (in pounds)" v-model="weight">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-city-page">City</label>
+          <input type="text" class="form-control" id="signup-city-page" placeholder="City" v-model="city">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-email-page">Email address</label>
+          <input type="email" class="form-control" id="signup-email-page" placeholder="Email address" v-model="email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-password-page">Password</label>
+          <input type="password" class="form-control" id="signup-password-page" placeholder="Password" v-model="password">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-password-confirmation-page">Password Confirmation</label>
+          <input type="password" class="form-control" id="signup-password-confirmation-page" placeholder="Password Confirmation" v-model="passwordConfirmation">
+        </div>
+        <hr />
+        <button class="btn btn-primary" v-on:click="submit()">Sign up</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id="user-home-page">
+  <div class="vue-component">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title-divider">
+            <span>{{ message }}</span>
+          </h2>
+          <button class="mb-1 btn btn-info btn-rounded" v-if="message === 'Friend Profile Page'" v-on:click="returnToHomePage()">Return to Personal Home Page</button>
+          <!-- The team list -->
+          <div class="team team-list mt-4">
+            
+            <!--Team Member jimi-->
+            <div class="team-member team-member-full">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h3 class="name">
+                    {{ user.username }}
+                  </h3>
+                  <p>First Name: {{ user.first_name }}</p>
+                  <p>Last Name: {{ user.last_name }}</p>
+                  <p>Age: {{ user.age }}</p>
+                  <p>Height: {{ user.height }}</p>
+                  <p>Weight: {{ user.weight }}</p>
+                  <p>City: {{ user.city }}</p>
+                  <p>Email: {{ user.email }}</p>
+                  <button type="button" class="mb-1 btn btn-lg btn-info" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="editProfile()">Edit Profile Information</button>
+                </div>
+                <div class="col-sm-4">
+                  <h3 class="mt-4">
+                    Fit Groups
+                  </h3>
+                  <div class="blog-roll-mini">
+                    <div class="row blog-post" v-for="fitGroup in fitGroups">
+                      <div>
+                        <h5>
+                          <a v-bind:href="'/#/fit_groups/' + fitGroup.id">Name: {{ fitGroup.name }}</a>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="row blog-post">
+                      <button class="mb-1 btn btn-primary" v-on:click="createFitGroup()">Create A New Fit Group</button>
+                      <button class="mb-1 btn btn-primary" v-on:click="joinExistingFitGroup()">Join an Existing Fit Group</button>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The team list -->
+          <div class="team team-list mt-4">
+            <h2>
+              Friends
+            </h2>
+            
+            <!--Friends List-->
+            <div class="team-member team-member-active">
+              <button type="button" class="mb-1 btn btn-blue">Add New Friend</button>
+              <div class="row" v-for="friend in friends">
+                <div class="col-sm-12">
+                  <h4 class="name">
+                    {{ friend.first_name }} {{ friend.last_name }}
+                  </h4>
+                  <p class="role">Username: {{ friend.username }}</p>
+                  <button type="button" class="mb-1 btn btn-info btn-rounded" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="viewFriendProfile(friend)">View Profile</button>
+                  <button type="button" class="mb-1 btn btn-info btn-rounded" v-else-if="friend.id !== currentUser.id" v-on:click="addThisFriend(friend)">Add Friend</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="user-edit-page">
+  <div class="vue-component">
+    <div class="container">
+      <form class="form-login form-wrapper form-medium" role="form">
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <h3 class="title-divider">
+          <span>{{ message }}</span> 
+        </h3>
+        <h5>
+          Account Information
+        </h5>
+        <div class="form-group">
+          <label class="sr-only" for="signup-username-page">Username</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="Username" v-model="user.username">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-first-name-page">First Name</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="First name" v-model="user.first_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-last-name-page">Last Name</label>
+          <input type="text" class="form-control" id="signup-last-name-page" placeholder="Last name" v-model="user.last_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-age-page">Age</label>
+          <input type="text" class="form-control" id="signup-username-page" placeholder="Age" v-model="user.age">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-height-page">Height (in inches)</label>
+          <input type="text" class="form-control" id="signup-height-page" placeholder="Height (in inches)" v-model="user.height">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-weight-page">Weight (in pounds)</label>
+          <input type="text" class="form-control" id="signup-weight-page" placeholder="Weight (in pounds)" v-model="user.weight">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-city-page">City</label>
+          <input type="text" class="form-control" id="signup-city-page" placeholder="City" v-model="user.city">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-email-page">Email address</label>
+          <input type="email" class="form-control" id="signup-email-page" placeholder="Email address" v-model="user.email">
+        </div>
+        <hr />
+        <button class="btn btn-primary" v-on:click="saveEditsToProfile()">Submit Changes</button>
+      </form>
     </div>
   </div>
 </template>
