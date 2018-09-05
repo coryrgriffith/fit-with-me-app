@@ -32,6 +32,8 @@ var AllExercisesPage = {
   created: function() {
     axios.get('/api/exercises').then(function(response) {
       this.exercises = response.data;
+      console.log("in created function");
+      console.log(this.exercises);
     }.bind(this));
   },
   methods: {},
