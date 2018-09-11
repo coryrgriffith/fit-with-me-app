@@ -139,6 +139,52 @@ var SignupPage = {
   }
 };
 
+var UserEditPage = {
+  template: "#user-edit-page",
+  data: function() {
+    return {
+      message: "Edit Your Profile Information Below",
+      user: {
+        username: "",
+        first_name: "",
+        last_name: "",
+        age: "",
+        height: "",
+        weight: "",
+        city: "",
+        email: ""
+      },
+      errors: []
+    };
+  },
+  created: function() {
+    axios.get("/api/users/" + this.$route.params.id).then(function(response) {
+      this.user = response.data;
+    }.bind(this));
+  },
+  methods: {
+    saveEditsToProfile: function() {
+      var editParams = {
+        username: this.user.username,
+        first_name: this.user.first_name,
+        last_name: this.user.last_name, 
+        age: this.user.age, 
+        height: this.user.height, 
+        weight: this.user.weight, 
+        city: this.user.city, 
+        email: this.user.email
+      };
+      axios.patch("/api/users/" + this.$route.params.id, editParams).then(function(response) {
+        this.user = response.data;
+        router.push("/users/" + this.user.id);
+      }.bind(this)).catch(function(error) {
+        this.errors = error.response.data.errrors;
+      }.bind(this));
+    }
+  },
+  computed: {}
+};
+
 var ExercisePage = {
   template: "#exercise-page",
   data: function() {
@@ -293,48 +339,7 @@ var UserHomePage = {
   computed: {}
 };
 
-var UserEditPage = {
-  template: "#user-edit-page",
-  data: function() {
-    return {
-      message: "Edit Your Profile Information Below",
-      user: {
-        username: "",
-        first_name: "",
-        last_name: "",
-        age: "",
-        height: "",
-        weight: "",
-        city: "",
-        email: ""
-      }
-    };
-  },
-  created: function() {
-    axios.get("/api/users/" + this.$route.params.id).then(function(response) {
-      this.user = response.data;
-    }.bind(this));
-  },
-  methods: {
-    saveEditsToProfile: function() {
-      var editParams = {
-        username: this.user.username,
-        first_name: this.user.first_name,
-        last_name: this.user.last_name, 
-        age: this.user.age, 
-        height: this.user.height, 
-        weight: this.user.weight, 
-        city: this.user.city, 
-        email: this.user.email
-      };
-      axios.patch("/api/users/" + this.$route.params.id, editParams).then(function(response) {
-        this.user = response.data;
-        router.push("/users/" + this.user.id);
-      }.bind(this));
-    }
-  },
-  computed: {}
-};
+
 
 var NewFitGroupPage = {
   template: "#new-fitgroup-page",

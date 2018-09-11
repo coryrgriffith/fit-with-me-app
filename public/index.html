@@ -294,42 +294,51 @@
 <template id="user-edit-page">
   <div class="vue-component">
     <div class="container">
-      <h1>{{ message }}</h1>
-      <div>
+      <form class="form-login form-wrapper form-medium" role="form">
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <h3 class="title-divider">
+          <span>{{ message }}</span> 
+        </h3>
+        <h5>
+          Account Information
+        </h5>
         <div class="form-group">
-          <label>Username:</label>
-          <input type="text" class="form-control" v-model="user.username">
-        </div>
-        <div>
-          <label>First Name:</label> 
-          <input type="text" class="form-control" v-model="user.first_name">
-        </div>
-        <div class="form-group">
-          <label>Last Name:</label>
-          <input type="text" class="form-control" v-model="user.last_name">
-        </div>
-        <div class="form-group">
-          <label>Age:</label>
-          <input type="text" class="form-control" v-model="user.age">
+          <label class="sr-only" for="signup-username-page">Username</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="Username" v-model="user.username">
         </div>
         <div class="form-group">
-          <label>Height:</label>
-          <input type="text" class="form-control" v-model="user.height">
+          <label class="sr-only" for="signup-first-name-page">First Name</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="First name" v-model="user.first_name">
         </div>
         <div class="form-group">
-          <label>Weight:</label>
-          <input type="text" class="form-control" v-model="user.weight">
+          <label class="sr-only" for="signup-last-name-page">Last Name</label>
+          <input type="text" class="form-control" id="signup-last-name-page" placeholder="Last name" v-model="user.last_name">
         </div>
         <div class="form-group">
-          <label>City:</label>
-          <input type="text" class="form-control" v-model="user.city">
+          <label class="sr-only" for="signup-age-page">Age</label>
+          <input type="text" class="form-control" id="signup-username-page" placeholder="Age" v-model="user.age">
         </div>
         <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" v-model="user.email">
+          <label class="sr-only" for="signup-height-page">Height (in inches)</label>
+          <input type="text" class="form-control" id="signup-height-page" placeholder="Height (in inches)" v-model="user.height">
         </div>
-        <button class="btn btn-primary" v-on:click="saveEditsToProfile()">Submit Changes</button> 
-      </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-weight-page">Weight (in pounds)</label>
+          <input type="text" class="form-control" id="signup-weight-page" placeholder="Weight (in pounds)" v-model="user.weight">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-city-page">City</label>
+          <input type="text" class="form-control" id="signup-city-page" placeholder="City" v-model="user.city">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-email-page">Email address</label>
+          <input type="email" class="form-control" id="signup-email-page" placeholder="Email address" v-model="user.email">
+        </div>
+        <hr />
+        <button class="btn btn-primary" v-on:click="saveEditsToProfile()">Submit Changes</button>
+      </form>
     </div>
   </div>
 </template>
