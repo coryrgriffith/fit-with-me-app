@@ -395,14 +395,16 @@
 
 <template id="all-users-page">
   <div class="vue-component">
-    <div v-for="user in users"> 
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Username: {{ user.username }}</h5>
-            <p class="card-description">First Name: {{ user.first_name }}</p>
-            <p class="card-price">City: {{ user.city }}</p>
-            <button v-on:click="createFriendship(user)">Add Friend</button>
+    <div class="container">
+      <div v-for="user in users"> 
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Username: {{ user.username }}</h5>
+              <p class="card-description">First Name: {{ user.first_name }}</p>
+              <p class="card-price">City: {{ user.city }}</p>
+              <button v-on:click="createFriendship(user)">Add Friend</button>
+            </div>
           </div>
         </div>
       </div>
@@ -700,17 +702,17 @@
 
 <template id="workout-show-page">
   <div class="vue-component">
-
-    <h1>{{ name }}</h1>
-    
-    <div>
-      <p>Target Goal: {{ target_goal }}</p>
-      <p>Status: {{ status }}</p>
-      <div v-for="exercise in exercises">
-        <p>Exercise: {{ exercise.title }}</p>
+    <div class="container">
+      <h1>{{ name }}</h1>
+      
+      <div>
+        <p>Target Goal: {{ target_goal }}</p>
+        <p>Status: {{ status }}</p>
+        <div v-for="exercise in exercises">
+          <p>Exercise: {{ exercise.title }}</p>
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
