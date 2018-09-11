@@ -377,7 +377,29 @@
 <template id="all-exercises-page">
   <div class="vue-component">
     <div class="container">
-      <div v-for="exercise in exercises"> 
+      <h2 class="title-divider">
+        <span>Exercise <span class="font-weight-normal text-muted">Database</span></span>
+        <small>Learn New Ways to Get Fit!</small>
+      </h2>
+      
+      <div class="card-group">
+        <div v-for="exercise in exercises" class="col-md-4">
+          <div class="card">
+            <img class="card-img-top img-fluid" v-bind:src="exercise.images[0].url" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">
+                {{ exercise.title }}
+              </h4>
+              <p class="card-text">Target Muscle: {{ exercise.target_muscle }}</p>
+              <p class="card-text">Required Equipment: {{ exercise.required_equipment }}</p>
+              <a v-bind:href="'/#/exercises/' + exercise.id" class="btn btn-primary">Go To Exercise Page</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div v-for="exercise in exercises"> 
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -388,7 +410,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

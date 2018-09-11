@@ -26,14 +26,42 @@ var AllExercisesPage = {
   template: "#all-exercises-page",
   data: function() {
     return {
-      exercises: []
+      exercises: [],
+      images: []
     };
   },
   created: function() {
     axios.get('/api/exercises').then(function(response) {
       this.exercises = response.data;
       console.log("in created function");
-      console.log(this.exercises);
+      console.log(response.data);
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
+var ExercisePage = {
+  template: "#exercise-page",
+  data: function() {
+    return {
+      exercise: {
+        title: "",
+        exercise_type: "",
+        target_muscle: "",
+        required_equipment: "",
+        difficulty_level: "",
+      },
+      instructions: [],
+      images: []
+    };
+  },
+  created: function() {
+    axios.get("/api/exercises/" + this.$route.params.id).then(function(response) {
+      this.exercise = response.data;
+      this.instructions = response.data.instructions;
+      this.images = response.data.images;
+      console.log(response.data);
     }.bind(this));
   },
   methods: {},
@@ -182,33 +210,6 @@ var UserEditPage = {
       }.bind(this));
     }
   },
-  computed: {}
-};
-
-var ExercisePage = {
-  template: "#exercise-page",
-  data: function() {
-    return {
-      exercise: {
-        title: "",
-        exercise_type: "",
-        target_muscle: "",
-        required_equipment: "",
-        difficulty_level: "",
-      },
-      instructions: [],
-      images: []
-    };
-  },
-  created: function() {
-    axios.get("/api/exercises/" + this.$route.params.id).then(function(response) {
-      this.exercise = response.data;
-      this.instructions = response.data.instructions;
-      this.images = response.data.images;
-      console.log(response.data);
-    }.bind(this));
-  },
-  methods: {},
   computed: {}
 };
 
