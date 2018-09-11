@@ -611,7 +611,6 @@
               <button v-on:click="changeExercise(exercise)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exerciseInfoModal">See More Info
               </button>
               <button v-on:click="addToCartedExercises(exercise)">Add Exercise To Workout</button>
-
             </div>
           </div>
         </div>
@@ -704,15 +703,16 @@
 
     </div>
 
-    <div class="modal fade" id="trackWorkoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Track Exercises in this Workout Here</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+    <div class="modal fade" id="trackWorkoutModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Track Exercises in this Workout Here</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
             <div v-if="selectedExercises[0].exercise" class="modal-body">
               <h1>{{ selectedWorkout.name }}</h1>
               <div v-for="exercise in selectedExercises">
@@ -721,13 +721,14 @@
                 <button v-on:click="completeExercise(exercise)">Mark Exercise Complete</button>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <!-- use button beleow to add workout to fit group -->
-              <button v-on:click="addSelectedWorkoutToFitGroup(selectedWorkout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- add a butto here to mark all exercises complete nice to have-->
+            
           </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
