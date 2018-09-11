@@ -249,43 +249,74 @@
 <template id="user-home-page">
   <div class="vue-component">
     <div class="container">
-      <h1>{{ message }}</h1>
-      <button v-on:click="returnToHomePage()">Personal Home Page</button>
-      <div>
-        <h3>User Information</h3>
-        <p>Username: {{ user.username }}</p>
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>Age: {{ user.age }}</p>
-        <p>Height: {{ user.height }}</p>
-        <p>Weight: {{ user.weight }}</p>
-        <p>City: {{ user.city }}</p>
-        <p>Email: {{ user.email }}</p>
-        <button v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="editProfile()">Edit Profile Information</button>
-      </div>
-      <div>
-        <h3>Friends</h3>
-        <button v-on:click="addFriend()">Add a Friend</button>
-        <div v-for="friend in friends">
-          <p>Username: {{ friend.username }}</p>
-          <p>First Name: {{ friend.first_name }}</p>
-          <p>Last Name: {{ friend.last_name }}</p>
-          <button v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="viewFriendProfile(friend)">View Profile</button>
-          <button v-else-if="friend.id !== currentUser.id" v-on:click="addThisFriend(friend)">Add Friend</button>
-          <!-- <button v-else-if="message === 'Friend Profile Page'" v-on:click="addThisFriend(friend)">Add Friend</button> -->
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title-divider">
+            <span>{{ message }}</span>
+          </h2>
+          <button class="mb-1 btn btn-info btn-rounded" v-if="message === 'Friend Profile Page'" v-on:click="returnToHomePage()">Return to Personal Home Page</button>
+          <!-- The team list -->
+          <div class="team team-list mt-4">
+            
+            <!--Team Member jimi-->
+            <div class="team-member team-member-full">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h3 class="name">
+                    {{ user.username }}
+                  </h3>
+                  <p>First Name: {{ user.first_name }}</p>
+                  <p>Last Name: {{ user.last_name }}</p>
+                  <p>Age: {{ user.age }}</p>
+                  <p>Height: {{ user.height }}</p>
+                  <p>Weight: {{ user.weight }}</p>
+                  <p>City: {{ user.city }}</p>
+                  <p>Email: {{ user.email }}</p>
+                  <button type="button" class="mb-1 btn btn-lg btn-info" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="editProfile()">Edit Profile Information</button>
+                </div>
+                <div class="col-sm-4">
+                  <h3 class="mt-4">
+                    Fit Groups
+                  </h3>
+                  <div class="blog-roll-mini">
+                    <div class="row blog-post" v-for="fitGroup in fitGroups">
+                      <div>
+                        <h5>
+                          <a v-bind:href="'/#/fit_groups/' + fitGroup.id">Name: {{ fitGroup.name }}</a>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="row blog-post">
+                      <button class="mb-1 btn btn-primary" v-on:click="createFitGroup()">Create A New Fit Group</button>
+                      <button class="mb-1 btn btn-primary" v-on:click="joinExistingFitGroup()">Join an Existing Fit Group</button>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The team list -->
+          <div class="team team-list mt-4">
+            <h2>
+              Friends
+            </h2>
+            
+            <!--Friends List-->
+            <div class="team-member team-member-active">
+              <button type="button" class="mb-1 btn btn-blue" v-on:click="addFriend">Add New Friend</button>
+              <div class="row" v-for="friend in friends">
+                <div class="col-sm-12">
+                  <h4 class="name">
+                    {{ friend.first_name }} {{ friend.last_name }}
+                  </h4>
+                  <p class="role">Username: {{ friend.username }}</p>
+                  <button type="button" class="mb-1 btn btn-info btn-rounded" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="viewFriendProfile(friend)">View Profile</button>
+                  <button type="button" class="mb-1 btn btn-info btn-rounded" v-else-if="friend.id !== currentUser.id" v-on:click="addThisFriend(friend)">Add Friend</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>
-        <h3>Fit Groups</h3>
-        <div v-for="fitGroup in fitGroups">
-          <p>Name: {{ fitGroup.name }}</p>
-          <p>ID: {{ fitGroup.id }}</p>
-          <a v-bind:href="'/#/fit_groups/' + fitGroup.id" class="btn btn-primary">Go To Fit Group Page</a>
-        </div>
-      </div>
-      <div>
-        <button class="btn btn-primary" v-on:click="createFitGroup()">Create A New Fit Group</button>
-        <button class="btn btn-primary" v-on:click="joinExistingFitGroup()">Join an Existing Fit Group</button>
       </div>
     </div>
   </div>

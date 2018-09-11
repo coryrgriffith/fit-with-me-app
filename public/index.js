@@ -339,8 +339,6 @@ var UserHomePage = {
   computed: {}
 };
 
-
-
 var NewFitGroupPage = {
   template: "#new-fitgroup-page",
   data: function() {
