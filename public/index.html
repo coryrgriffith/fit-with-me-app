@@ -505,71 +505,84 @@
 
 <template id="signup-page">
   <div class="vue-component">
-
     <div class="container">
-      <h1>Signup</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Username:</label> 
-        <input type="text" class="form-control" v-model="username">
-      </div>
-      <div class="form-group">
-        <label>First Name:</label>
-        <input type="text" class="form-control" v-model="first_name">
-      </div><div class="form-group">
-        <label>Last Name:</label>
-        <input type="text" class="form-control" v-model="last_name">
-      </div><div class="form-group">
-        <label>Age:</label>
-        <input type="text" class="form-control" v-model="age">
-      </div><div class="form-group">
-        <label>Height (in inches):</label>
-        <input type="text" class="form-control" v-model="height">
-      </div><div class="form-group">
-        <label>Weight (in pounds):</label>
-        <input type="text" class="form-control" v-model="weight">
-      </div><div class="form-group">
-        <label>City:</label>
-        <input type="text" class="form-control" v-model="city">
-      </div><div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <div class="form-group">
-        <label>Password confirmation:</label>
-        <input type="password" class="form-control" v-model="passwordConfirmation">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+      <form class="form-login form-wrapper form-medium" role="form">
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <h3 class="title-divider">
+          <span>Sign Up</span> 
+          <small class="mt-4">Already signed up? <a href="/#/login">Login here</a>.</small>
+        </h3>
+        <h5>
+          Account Information
+        </h5>
+        <div class="form-group">
+          <label class="sr-only" for="signup-username-page">Username</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="Username" v-model="username">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-first-name-page">First Name</label>
+          <input type="text" class="form-control" id="signup-first-name-page" placeholder="First name" v-model="first_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-last-name-page">Last Name</label>
+          <input type="text" class="form-control" id="signup-last-name-page" placeholder="Last name" v-model="last_name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-age-page">Age</label>
+          <input type="text" class="form-control" id="signup-username-page" placeholder="Age" v-model="age">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-height-page">Height (in inches)</label>
+          <input type="text" class="form-control" id="signup-height-page" placeholder="Height (in inches)" v-model="height">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-weight-page">Weight (in pounds)</label>
+          <input type="text" class="form-control" id="signup-weight-page" placeholder="Weight (in pounds)" v-model="weight">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-city-page">City</label>
+          <input type="text" class="form-control" id="signup-city-page" placeholder="City" v-model="city">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-email-page">Email address</label>
+          <input type="email" class="form-control" id="signup-email-page" placeholder="Email address" v-model="email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-password-page">Password</label>
+          <input type="password" class="form-control" id="signup-password-page" placeholder="Password" v-model="password">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="signup-password-confirmation-page">Password Confirmation</label>
+          <input type="password" class="form-control" id="signup-password-confirmation-page" placeholder="Password Confirmation" v-model="passwordConfirmation">
+        </div>
+        <hr />
+        <button class="btn btn-primary" v-on:click="submit()">Sign up</button>
+      </form>
     </div>
-
   </div>
 </template>
 
 <template id="login-page">
   <div class="vue-component">
-
     <div class="container">
-      <h1>Login</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email">
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+      <form class="form-login form-wrapper form-narrow">
+        <h3 class="title-divider">
+          <span>Login</span> 
+          <small class="mt-4">Not signed up? <a href="/#/signup">Sign up here</a>.</small>
+        </h3>
+        <div class="form-group">
+          <label class="sr-only" for="login-email-page">Email</label>
+          <input type="email" id="login-email-page" class="form-control email" placeholder="Email" v-model="email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="login-password-page">Password</label>
+          <input type="password" id="login-password-page" class="form-control password" placeholder="Password" v-model="password">
+        </div>
+        <button type="button" class="btn btn-primary" v-on:click="submit()">Login</button>
+      </form>
     </div>
-
   </div>
 </template>
 
