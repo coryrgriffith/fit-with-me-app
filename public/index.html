@@ -616,55 +616,31 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Exercise Information</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h1>{{ selectedExercise.title }}</h1>
-              <p>{{ selectedExercise.exercise_type }}</p>
-              <p>{{ selectedExercise.target_muscle }}</p>
-              <p>{{ selectedExercise.required_equipment }}</p>
-              <p>{{ selectedExercise.difficulty_level }}</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button v-on:click="addToCartedExercises(selectedExercise)" class="btn btn-secondary" data-dismiss="modal">Add Exercise To Workout</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <div class="modal fade" id="exerciseInfoModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Exercise Information</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h1>{{ selectedExercise.title }}</h1>
-              <p>{{ selectedExercise.exercise_type }}</p>
-              <p>{{ selectedExercise.target_muscle }}</p>
-              <p>{{ selectedExercise.required_equipment }}</p>
-              <p>{{ selectedExercise.difficulty_level }}</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button v-on:click="addToCartedExercises(selectedExercise)" class="btn btn-primary" data-dismiss="modal">Add Exercise To Workout</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
     </div>
+
+    <div class="modal fade" id="exerciseInfoModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Exercise Information</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h1>{{ selectedExercise.title }}</h1>
+            <p>{{ selectedExercise.exercise_type }}</p>
+            <p>{{ selectedExercise.target_muscle }}</p>
+            <p>{{ selectedExercise.required_equipment }}</p>
+            <p>{{ selectedExercise.difficulty_level }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button v-on:click="addToCartedExercises(selectedExercise)" class="btn btn-primary" data-dismiss="modal">Add Exercise To Workout</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 </template>
 
@@ -758,6 +734,12 @@
 
 <template id="all-workouts-page">
   <div class="vue-component">
+    <div>
+      <h4><a href="/#/workouts/new">Create a New Workout</a></h4>
+    </div>
+    <div>
+      <h3>Existing Workouts</h3>
+    </div>
     <div v-for="workout in workouts"> 
       <div class="col-sm-6">
         <div class="card">
@@ -783,11 +765,11 @@
           </div>
           <div class="modal-body">
             <h1>{{ selectedWorkout.name }}</h1>
-              <p>{{ selectedWorkout.target_goal }}</p>
-              <div v-for="exercise in selectedWorkout.exercises">
-                <p>Exercise: {{ exercise.title }}</p>
-                <p>Target Muscle: {{ exercise.target_muscle }}</p>
-              </div>
+            <p>{{ selectedWorkout.target_goal }}</p>
+            <div v-for="exercise in selectedWorkout.exercises">
+              <p>Exercise: {{ exercise.title }}</p>
+              <p>Target Muscle: {{ exercise.target_muscle }}</p>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
