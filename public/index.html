@@ -733,18 +733,20 @@
 
 <template id="fitgroup-show-page">
   <div class="vue-component">
-
-    <h1>Fit Group Name: {{ name }}</h1>
-    <h4>Fit Group ID: {{ id }}</h4>
-    
-    <div>
-      <p>Captain: {{ captain.first_name }}</p>
-      <p>City: {{captain.city }}</p>
-      <p>Status: {{ status }}</p>
-      <h4>Fit Group Members</h4>
-      <div v-for="user in users">
-        <p>Name: {{ user.first_name }}</p>
-        <p>Username: {{ user.username }}</p>
+    <div class="container">
+      <div>
+        <h1>Fit Group Name: {{ name }}</h1>
+        <h4>Fit Group ID: {{ id }}</h4>
+      </div>
+      <div>
+        <p>Captain: {{ captain.first_name }}</p>
+        <p>City: {{captain.city }}</p>
+        <p>Status: {{ status }}</p>
+        <h4>Fit Group Members</h4>
+        <div v-for="user in users">
+          <p>Name: {{ user.first_name }}</p>
+          <p>Username: {{ user.username }}</p>
+        </div>
       </div>
       
       <div>
@@ -755,7 +757,6 @@
         </div>
         <button class="btn btn-primary" v-on:click="addWorkoutToFitGroup()">Add a Workout</button>
       </div>
-
     </div>
 
     <div class="modal fade" id="trackWorkoutModal">
