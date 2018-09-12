@@ -367,6 +367,10 @@
 <template id="all-users-page">
   <div class="vue-component">
     <div class="container">
+      <h2 class="title-divider">
+        <span>User <span class="font-weight-normal text-muted">Database</span></span>
+        <small>Look for New Friends Here!</small>
+      </h2>
       <div v-for="user in users"> 
         <div class="col-sm-6">
           <div class="card">
@@ -619,12 +623,12 @@
             <div v-for="cartedExercise in cartedExercises" class="col-md-4">
               <div class="card">
                 <div v-if="cartedExercise.exercise">
-                  <p>{{ cartedExercise.id }}</p>
-                  <p>{{ cartedExercise.exercise.title }}</p>
-                  <p>{{ cartedExercise.exercise.exercise_type }}</p>
-                  <p>{{ cartedExercise.exercise.target_muscle }}</p>
-                  <p>{{ cartedExercise.exercise.required_equipment }}</p>
-                  <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+                  <h4 class="card-title">
+                    {{ cartedExercise.exercise.title }}
+                  </h4>
+                  <p class="card-text">Target Muscle: {{ cartedExercise.exercise.target_muscle }}</p>
+                  <p class="card-text">Required Equipment: {{ cartedExercise.exercise.required_equipment }}</p>
+                  <p class="card-text">Difficulty: {{ cartedExercise.exercise.difficulty_level }}</p>
                   <!-- <button>Remove This Exercise (Nice to Have)</button> -->
                 </div>
               </div>
@@ -690,13 +694,20 @@
 <template id="workout-show-page">
   <div class="vue-component">
     <div class="container">
-      <h1>{{ name }}</h1>
+      <h2 class="title-divider">
+        <span>{{ name }}</span>
+        <small>Target Goal: {{ target_goal }}</small>
+      </h2>
       
-      <div>
-        <p>Target Goal: {{ target_goal }}</p>
-        <p>Status: {{ status }}</p>
-        <div v-for="exercise in exercises">
-          <p>Exercise: {{ exercise.title }}</p>
+      <div class="card-group">
+        <div class="col-md-4" v-for="exercise in exercises">
+          <div class="card">
+            <h4 class="card-title">
+              {{ exercise.title }}
+            </h4>
+            <p class="card-text">Target Muscle: {{ exercise.target_muscle }}</p>
+            <p class="card-text">Required Equipment: {{ exercise.required_equipment }}</p>
+          </div>
         </div>
       </div>
     </div>
