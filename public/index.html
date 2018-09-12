@@ -259,20 +259,24 @@
           </div>
           <!-- The team list -->
           <div class="team team-list mt-4">
-            <h2 class="title-divider">
+            <h2 class="title-divider" v-if="message === 'Welcome to Your Personal Home Page'">
               <span>Friends</span>
-              <small>View your Friends and Find New Ones!</small>
+              <small>View your Friends or <a href="/#/users">Add a New Friend!</a></small>
+            </h2>
+            <h2 class="title-divider" v-else-if="message === 'Friend Profile Page'">
+              <span>Friends</span>
+              <small>View the Friends of {{ user.first_name }} Below</small>
             </h2>
             
             <!--Friends List-->
             <div class="team-member team-member-active">
-              <button type="button" class="mb-1 btn btn-blue" v-on:click="addFriend">Add New Friend</button>
-              <div class="row" v-for="friend in friends">
-                <div class="col-sm-12">
-                  <h4 class="name">
+              <div class="card-group"> 
+                <div v-for="friend in friends" class="col-md-4">
+                <div class="card">
+                  <h4 class="card-title">
                     {{ friend.first_name }} {{ friend.last_name }}
                   </h4>
-                  <p class="role">Username: {{ friend.username }}</p>
+                  <p class="card-text">Username: {{ friend.username }}</p>
                   <button type="button" class="mb-1 btn btn-info btn-rounded" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="viewFriendProfile(friend)">View Profile</button>
                   <button type="button" class="mb-1 btn btn-info btn-rounded" v-else-if="friend.id !== currentUser.id" v-on:click="addThisFriend(friend)">Add Friend</button>
                 </div>
@@ -481,14 +485,7 @@
           </div>
         </div>
       </div>
-      <!-- Why AppStrap -->
-      <!--Pricing Table-->
-      <!-- Steps -->
-      <!-- Video background MDR -->
-      <!--Projects carousel -->
-      <!--Customer testimonial-->
     </div>
-    
     <!-- ======== @Region: #content-below ======== -->
     <div id="content-below">
       <!-- Awesome features call to action -->
@@ -815,12 +812,12 @@
           <small>View all Workouts Below or <a href="/#/workouts/new">Create a Workout</a></small>
         </h2>
       </div>
-      <div v-for="workout in workouts"> 
-        <div class="col-sm-6">
+      <div class="card-group">
+        <div v-for="workout in workouts" class="col-md-4"> 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ workout.name }}</h5>
-              <p class="card-description">Target Goal: {{ workout.target_goal }}</p>
+              <h4 class="card-title">{{ workout.name }}</h4>
+              <p class="card-text">Target Goal: {{ workout.target_goal }}</p>
               <button v-on:click="changeWorkout(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#workoutInfoModal">See Exercise Info</button>
               <!-- add button to add workout to fit group here -->
               <button v-on:click="addSelectedWorkoutToFitGroup(workout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
