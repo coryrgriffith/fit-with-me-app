@@ -49,49 +49,8 @@
 
 </head>
 <body>
-  <!-- <div class="container"> -->
     <div id="vue-app">
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/#/">Fit With Me</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/#/users/:id">Personal Home Page <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#/workouts/new">Create New Workout</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#/fit_groups/new">Create New Fit Group</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                User
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/#/login">Log In</a>
-                <a class="dropdown-item" href="/#/logout">Log Out</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/#/signup">Sign Up</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav> -->
-
       <div id="header">
-        
         <!--Header upper region-->
         <div class="header-upper">
           <!-- all direct children of the .header-inner element will be vertically aligned with each other you can override all the behaviours using the flexbox utilities (flexbox.htm) All elements with .header-brand & .header-block-flex wrappers will automatically be aligned inline & vertically using flexbox, this can be overridden using the flexbox utilities (flexbox.htm) Use .header-block to stack elements within on small screen & "float" on larger screens use .order-first or/and .order-last classes to make an element show first or last within .header-inner or .headr-block elements -->
@@ -111,7 +70,7 @@
               <!--branding/logo -->
               <div class="header-brand">
                 <a class="header-brand-text" href="/#/" title="Home">
-                  <h1 class="h2">
+                  <h1 class="h1">
                     <span class="header-brand-text-alt">Fit</span>With Me
                   </h1>
                 </a>
@@ -209,7 +168,6 @@
       <router-view></router-view>
 
     </div>
-  <!-- </div> -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -635,20 +593,12 @@
 <template id="new-workout-page">
   <div class="vue-component">
     <div class="container">
-      <div id="exercise-cart">
-        <div v-for="cartedExercise in cartedExercises">
-          <div v-if="cartedExercise.exercise">
-            <p>{{ cartedExercise.id }}</p>
-            <p>{{ cartedExercise.exercise.title }}</p>
-            <p>{{ cartedExercise.exercise.exercise_type }}</p>
-            <p>{{ cartedExercise.exercise.target_muscle }}</p>
-            <p>{{ cartedExercise.exercise.required_equipment }}</p>
-            <p>{{ cartedExercise.exercise.difficulty_level }}</p>
-            <!-- <button>Remove This Exercise (Nice to Have)</button> -->
-          </div>
-        </div>
-        <div>
-          <h3>Create Workout Below</h3>
+      <div class="row">
+        <div class="col-md-3">
+          <h2 class="title-divider">
+            <span>Create New <span class="font-weight-normal text-muted">Workout</span></span>
+            <small>Create a new Workout or <a href="/#/workouts">View Existing Workouts</a></small>
+          </h2>
           <div class="form-group">
             <label>Workout Name:</label>
             <input type="text" class="form-control" v-model="name">
@@ -660,22 +610,55 @@
           <button class="btn btn-primary" v-on:click="createWorkout()">Create Workout</button>
           <!-- <button>Remove All Exercises (Nice to Have)</button> -->
         </div>
-      </div>
-
-      <div v-for="exercise in exercises"> 
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{ exercise.title }}</h5>
-              <p class="card-description">Target Muscle: {{ exercise.target_muscle }}</p>
-              <p class="card-price">Required Equipment: {{ exercise.required_equipment }}</p>
-              <button v-on:click="changeExercise(exercise)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exerciseInfoModal">See More Info
-              </button>
-              <button v-on:click="addToCartedExercises(exercise)">Add Exercise To Workout</button>
+        <div id="exercise-cart" class="col-md-9">
+          <h2 class="title-divider">
+            <span>Exercises <span class="font-weight-normal text-muted">In Workout</span></span>
+            <small>All Exercises that will be Added to the Workout will Appear Below</small>
+          </h2>
+          <div class="card-group">
+            <div v-for="cartedExercise in cartedExercises" class="col-md-4">
+              <div class="card">
+                <div v-if="cartedExercise.exercise">
+                  <p>{{ cartedExercise.id }}</p>
+                  <p>{{ cartedExercise.exercise.title }}</p>
+                  <p>{{ cartedExercise.exercise.exercise_type }}</p>
+                  <p>{{ cartedExercise.exercise.target_muscle }}</p>
+                  <p>{{ cartedExercise.exercise.required_equipment }}</p>
+                  <p>{{ cartedExercise.exercise.difficulty_level }}</p>
+                  <!-- <button>Remove This Exercise (Nice to Have)</button> -->
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div>
+        <h2 class="title-divider">
+          <span>Exercise <span class="font-weight-normal text-muted">Database</span></span>
+          <small>Select from these Exercises Below to Add to Your New Workout</small>
+        </h2>
+        
+        <div class="card-group">
+          <div v-for="exercise in exercises" class="col-md-4">
+            <div class="card">
+              <img class="card-img-top img-fluid" v-bind:src="exercise.images[0].url" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title">
+                  {{ exercise.title }}
+                </h4>
+                <p class="card-text">Target Muscle: {{ exercise.target_muscle }}</p>
+                <p class="card-text">Required Equipment: {{ exercise.required_equipment }}</p>
+                <button v-on:click="changeExercise(exercise)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exerciseInfoModal">See More Info
+                </button>
+                <button v-on:click="addToCartedExercises(exercise)">Add Exercise To Workout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
 
     <div class="modal fade" id="exerciseInfoModal">
@@ -724,39 +707,56 @@
   <div class="vue-component">
 
     <div class="container">
-      <h1>Create a New Fit Group</h1>
-      <div class="form-group">
-        <label>Fit Group Name:</label> 
-        <input type="text" class="form-control" v-model="name">
-      </div>
-      <div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-      </div>
-    </div>
+      <h2 class="title-divider">
+        <span>Create a New <span class="font-weight-normal text-muted">Fit Group</span></span>
+        <small>Enter Fit Group Name Below</small>
+      </h2>
 
+      <form class="form-login form-wrapper form-narrow">
+        <h3 class="title-divider">
+          <span>Fit Group Name</span> 
+          <small class="mt-4">Not ready to create your own Fit Group? Why not join one of our existing Fit Groups to get started! <a href="/#/fit_groups">Fit Groups</a>.</small>
+        </h3>
+        <div class="form-group">
+          <label class="sr-only" for="login-email-page">Fit Group Name</label>
+          <input type="text" id="login-email-page" class="form-control email" placeholder="Enter Name Here" v-model="name">
+        </div>
+        <button type="button" class="btn btn-primary" v-on:click="submit()">Create New Fit Group</button>
+      </form>
+
+    </div>
   </div>
 </template>
 
 <template id="fitgroup-show-page">
   <div class="vue-component">
     <div class="container">
+      <h2 class="title-divider">
+        <span>Fit <span class="font-weight-normal text-muted">Group</span></span>
+        <small>{{ name }}</small>
+      </h2>
+
       <div>
-        <h1>Fit Group Name: {{ name }}</h1>
-        <h4>Fit Group ID: {{ id }}</h4>
-      </div>
-      <div>
+        <p class="font-weight-bold">Fit Group ID: {{ id }}</p>
         <p>Captain: {{ captain.first_name }}</p>
         <p>City: {{captain.city }}</p>
         <p>Status: {{ status }}</p>
-        <h4>Fit Group Members</h4>
-        <div v-for="user in users">
-          <p>Name: {{ user.first_name }}</p>
-          <p>Username: {{ user.username }}</p>
+        <div>
+          <h2 class="title-divider">
+            <span>Fit Group<span class="font-weight-normal text-muted">Members</span></span>
+          </h2>
+          <div v-for="user in users">
+            <p>Name: {{ user.first_name }}</p>
+            <p>Username: {{ user.username }}</p>
+          </div>
         </div>
       </div>
       
       <div>
-        <h3>Workouts for this Fit Group</h3>
+        <h2 class="title-divider">
+          <span>Work<span class="font-weight-normal text-muted">outs</span></span>
+          <small>All Workouts for the Fit Group will appear below</small>
+        </h2>
         <div v-for="workout in workouts">
           <p>Workout: {{ workout.name }}</p>
           <button v-on:click="trackExercises(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackWorkoutModal">Track Exercise in This Workout</button>
@@ -799,10 +799,10 @@
   <div class="vue-component">
     <div class="container">
       <div>
-        <h4><a href="/#/workouts/new">Create a New Workout</a></h4>
-      </div>
-      <div>
-        <h3>Existing Workouts</h3>
+        <h2 class="title-divider">
+          <span>Existing <span class="font-weight-normal text-muted">Workouts</span></span>
+          <small>View all Workouts Below or <a href="/#/workouts/new">Create a Workout</a></small>
+        </h2>
       </div>
       <div v-for="workout in workouts"> 
         <div class="col-sm-6">
@@ -852,8 +852,10 @@
   <div class="vue-component">
     <div class="container">
       <div>
-        <h4><a href="/#/fit_groups/new">Create a Fit Group</a></h4>
-        <h3>Existing Fit Groups</h3>
+        <h2 class="title-divider">
+          <span>Fit <span class="font-weight-normal text-muted">Groups</span></span>
+          <small>View all Fit Groups Below or <a href="/#/fit_groups/new">Create a Fit Group</a></small>
+        </h2>
       </div>
       <div v-for="fitGroup in fitGroups"> 
         <div class="col-sm-6">
