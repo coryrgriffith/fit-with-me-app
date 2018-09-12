@@ -262,9 +262,12 @@
             <div class="team-member team-member-full">
               <div class="row">
                 <div class="col-sm-8">
-                  <h3 class="name">
-                    {{ user.username }}
-                  </h3>
+                  <h2 class="title-divider">
+                    <span>Profile <span class="font-weight-normal text-muted">Information</span></span>
+                    <small v-if="message === 'Welcome to Your Personal Home Page'">Welcome {{ user.first_name }}</small>
+                  </h2>
+
+                  <p>Username: {{ user.username }}</p>
                   <p>First Name: {{ user.first_name }}</p>
                   <p>Last Name: {{ user.last_name }}</p>
                   <p>Age: {{ user.age }}</p>
@@ -275,9 +278,10 @@
                   <button type="button" class="mb-1 btn btn-lg btn-info" v-if="message === 'Welcome to Your Personal Home Page'" v-on:click="editProfile()">Edit Profile Information</button>
                 </div>
                 <div class="col-sm-4">
-                  <h3 class="mt-4">
-                    Fit Groups
-                  </h3>
+                  <h2 class="title-divider">
+                    <span>Fit <span class="font-weight-normal text-muted">Groups</span></span>
+                    <small>View your Fit Groups Below</small>
+                  </h2>
                   <div class="blog-roll-mini">
                     <div class="row blog-post" v-for="fitGroup in fitGroups">
                       <div>
@@ -297,8 +301,9 @@
           </div>
           <!-- The team list -->
           <div class="team team-list mt-4">
-            <h2>
-              Friends
+            <h2 class="title-divider">
+              <span>Friends</span>
+              <small>View your Friends and Find New Ones!</small>
             </h2>
             
             <!--Friends List-->
@@ -861,7 +866,7 @@
                 <p>Workout Goal: {{ workout.target_goal }}</p>
               </div>
               <!-- add button to add workout to fit group here -->
-              <button v-on:click="joinFitGroup(fitGroup)" class="btn btn-secondary">Join Fit Group</button>
+              <button v-on:click="joinFitGroup(fitGroup)" class="btn btn-primary">Join Fit Group</button>
             </div>
           </div>
         </div>
