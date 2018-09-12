@@ -375,13 +375,13 @@
         <span>User <span class="font-weight-normal text-muted">Database</span></span>
         <small>Look for New Friends Here!</small>
       </h2>
-      <div v-for="user in users"> 
-        <div class="col-sm-6">
+      <div class="card-group">
+        <div v-for="user in users" class="col-md-4"> 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Username: {{ user.username }}</h5>
-              <p class="card-description">First Name: {{ user.first_name }}</p>
-              <p class="card-price">City: {{ user.city }}</p>
+              <p class="card-text">Name: {{ user.first_name }} {{user.last_name }}</p>
+              <p class="card-text">City: {{ user.city }}</p>
               <button v-on:click="createFriendship(user)">Add Friend</button>
             </div>
           </div>
@@ -865,15 +865,15 @@
           <small>View all Fit Groups Below or <a href="/#/fit_groups/new">Create a Fit Group</a></small>
         </h2>
       </div>
-      <div v-for="fitGroup in fitGroups"> 
-        <div class="col-sm-6">
+      <div class="card-group">
+        <div v-for="fitGroup in fitGroups" class="col-md-4"> 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ fitGroup.name }}</h5>
+              <h4 class="card-title">{{ fitGroup.name }}</h4>
               <h6>Fit Group Workouts</h6>
               <div v-for="workout in fitGroup.workouts">
-                <p>Workout Name: {{ workout.name }}</p>
-                <p>Workout Goal: {{ workout.target_goal }}</p>
+                <p class="card-text">Workout Name: {{ workout.name }}</p>
+                <p class="card-text">Workout Goal: {{ workout.target_goal }}</p>
               </div>
               <!-- add button to add workout to fit group here -->
               <button v-on:click="joinFitGroup(fitGroup)" class="btn btn-primary">Join Fit Group</button>
