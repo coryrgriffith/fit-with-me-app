@@ -11,3 +11,4 @@ json.email user.email
 json.friends user.friends
 json.fit_groups user.fit_groups
 json.user_exercises user.user_exercises
+json.images user.images
