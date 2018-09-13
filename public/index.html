@@ -595,7 +595,7 @@
   <div class="vue-component">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <h2 class="title-divider">
             <span>Create New <span class="font-weight-normal text-muted">Workout</span></span>
             <small>Create a new Workout or <a href="/#/workouts">View Existing Workouts</a></small>
@@ -611,13 +611,13 @@
           <button class="btn btn-primary" v-on:click="createWorkout()">Create Workout</button>
           <!-- <button>Remove All Exercises (Nice to Have)</button> -->
         </div>
-        <div id="exercise-cart" class="col-md-9">
+        <div id="exercise-cart" class="col-md-8">
           <h2 class="title-divider">
             <span>Exercises <span class="font-weight-normal text-muted">In Workout</span></span>
             <small>All Exercises that will be Added to the Workout will Appear Below</small>
           </h2>
           <div class="card-group">
-            <div v-for="cartedExercise in cartedExercises" class="col-md-4">
+            <div v-for="cartedExercise in cartedExercises" class="col-md-6">
               <div class="card">
                 <div v-if="cartedExercise.exercise">
                   <h4 class="card-title">
