@@ -225,7 +225,7 @@
                     <small v-if="message === 'Welcome to Your Personal Home Page'">Welcome {{ user.first_name }}</small>
                   </h2>
                   <div class="col-md-3">
-                    <img class="card-img-top img-fluid" v-bind:src="user.images[0].url" alt="Card image cap">
+                    <img v-bind:src="user.images[0].url" alt="Card image cap">
                   </div>
                   
                   <p>Username: {{ user.username }}</p>
@@ -276,7 +276,7 @@
               <div class="card-group"> 
                 <div v-for="friend in friends" class="col-md-4">
                 <div class="card">
-                 <!--  <img class="card-img-top img-fluid" v-bind:src="friend.images[0].url" alt="Card image cap"> -->
+                  <!-- <img class="card-img-top img-fluid" v-bind:src="friend.images[0].url" alt="Card image cap"> -->
                   <h4 class="card-title">
                     {{ friend.first_name }} {{ friend.last_name }}
                   </h4>
@@ -382,6 +382,7 @@
       <div class="card-group">
         <div v-for="user in users" class="col-md-4"> 
           <div class="card">
+            <img class="card-img-top img-fluid" v-bind:src="user.images[0].url" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Username: {{ user.username }}</h5>
               <p class="card-text">Name: {{ user.first_name }} {{user.last_name }}</p>
