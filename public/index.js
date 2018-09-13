@@ -497,7 +497,8 @@ var FitGroupShowPage = {
       users: [
         {
           username: "",
-          first_name: ""
+          first_name: "",
+          last_name: ""
         }
       ],
       status: "",
@@ -534,6 +535,11 @@ var FitGroupShowPage = {
     }.bind(this));
   },
   methods: {
+    addThisUserAsFriend: function(inputFriend) {
+      axios.post("/api/friendships", inputFriend).then(function(response) {
+        router.push("/users/" + response.data.id);
+      }.bind(this));
+    },
     addWorkoutToFitGroup: function() {
       axios.patch("/api/fit_groups/" + this.id).then(function(response) {
 

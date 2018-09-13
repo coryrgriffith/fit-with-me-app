@@ -658,8 +658,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
 
     <div class="modal fade" id="exerciseInfoModal">
@@ -739,37 +737,50 @@
 <template id="fitgroup-show-page">
   <div class="vue-component">
     <div class="container">
-      <h2 class="title-divider">
-        <span>Fit <span class="font-weight-normal text-muted">Group</span></span>
-        <small>{{ name }}</small>
-      </h2>
-
-      <div>
-        <p class="font-weight-bold">Fit Group ID: {{ id }}</p>
-        <p>Captain: {{ captain.first_name }}</p>
-        <p>City: {{captain.city }}</p>
-        <p>Status: {{ status }}</p>
-        <div>
+      <div class="row">
+        <div class="col-md-4">
           <h2 class="title-divider">
-            <span>Fit Group<span class="font-weight-normal text-muted">Members</span></span>
+            <span>Fit <span class="font-weight-normal text-muted">Group</span></span>
+            <small>{{ name }}</small>
           </h2>
-          <div v-for="user in users">
-            <p>Name: {{ user.first_name }}</p>
-            <p>Username: {{ user.username }}</p>
+          <p class="font-weight-bold">Fit Group ID: {{ id }}</p>
+          <p>Captain: {{ captain.first_name }}</p>
+          <p>City: {{captain.city }}</p>
+          <p>Status: {{ status }}</p>
+        </div>
+        <div class="col-md-8">
+          <h2 class="title-divider">
+            <span>Work<span class="font-weight-normal text-muted">outs</span></span>
+            <small>All Workouts for the Fit Group will appear below</small>
+          </h2>
+          <div class="card-group">
+            <div v-for="workout in workouts" class="col-md-6">
+              <div class="card">
+                <h4 class="card-title">Workout: {{ workout.name }}</h4>
+                <button v-on:click="trackExercises(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackWorkoutModal">Track Exercise in This Workout</button>
+              </div>
+            </div>
           </div>
+          <button class="btn btn-primary" v-on:click="addWorkoutToFitGroup()">Add a Workout</button>
         </div>
       </div>
-      
       <div>
         <h2 class="title-divider">
-          <span>Work<span class="font-weight-normal text-muted">outs</span></span>
-          <small>All Workouts for the Fit Group will appear below</small>
+          <span>Fit Group<span class="font-weight-normal text-muted">Members</span></span>
         </h2>
-        <div v-for="workout in workouts">
-          <p>Workout: {{ workout.name }}</p>
-          <button v-on:click="trackExercises(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackWorkoutModal">Track Exercise in This Workout</button>
+
+        <div class="team-member team-member-active">
+          <div class="card-group"> 
+            <div v-for="user in users" class="col-md-4">
+            <div class="card">
+              <h4 class="card-title">
+                {{ user.first_name }} {{ user.last_name}}
+              </h4>
+              <p class="card-text">Username: {{ user.username }}</p>
+              <button type="button" class="mb-1 btn btn-info btn-rounded" v-on:click="addThisUserAsFriend(user)">Add Friend</button>
+            </div>
+          </div>
         </div>
-        <button class="btn btn-primary" v-on:click="addWorkoutToFitGroup()">Add a Workout</button>
       </div>
     </div>
 
