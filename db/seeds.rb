@@ -75,3 +75,39 @@
 #   counter += 1
 # end
 # ************** gather exercise information and save to database*********
+
+
+
+# *************** add images and tie them to users ***********************
+
+# Arnold Schwarzengger
+#   Image.create(url: "http://www.gstatic.com/tv/thumb/persons/1570/1570_v9_bb.jpg", user_id: 10)
+
+# # Hulk Hogan
+#   Image.create(url: "http://www.gstatic.com/tv/thumb/persons/27170/27170_v9_ba.jpg", user_id: 9)
+  
+# # Heidi Powell
+#   Image.create(url: "http://www.gstatic.com/tv/thumb/persons/784987/784987_v9_ba.jpg", user_id: 8)
+  
+# # Jeremy
+#   Image.create(url: "https://s3-us-west-1.amazonaws.com/co-directory-images/jeremyalvarez.jpg", user_id: 7)
+  
+# # Bozo
+#   Image.create(url: "https://c1.staticflickr.com/4/3275/2715786898_f396c6b1d0_b.jpg", user_id: 6)
+
+# # Beauregard
+#   Image.create(url: "https://gfnc1kn6pi-flywheel.netdna-ssl.com/wp-content/uploads/2016/10/sp3.jpg", user_id: 5)
+  
+# # Scooby
+#   Image.create(url: "https://lh3.googleusercontent.com/m7uqFDVdbyIDgTUxpc6A01MugkUoUk34swM6crDoC03I4eRqma-BhaNi7dmuQukb-nLZYiQMgpwXJM6INg", user_id: 4)
+  
+# # Bob
+#   Image.create(url: "https://ih0.redbubble.net/image.26154218.1357/flat,1000x1000,075,f.u2.jpg", user_id: 3)
+  
+# # Cassandra
+#   Image.create(url: "http://static.wixstatic.com/media/1d2e2d_6826432113bf483397f024eb29b42bea.jpg/v1/fill/w_340,h_293,al_c,q_80,usm_0.66_1.00_0.01/1d2e2d_6826432113bf483397f024eb29b42bea.webp", user_id: 2)
+
+# # Cory
+#   Image.create(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfgdq7r1HoNH1XtNV4RfR34nYUe4vwU9a2sZqO69EA7h762qXh", user_id: 1)
+
+# *************** add images and tie them to users ***********************

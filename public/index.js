@@ -260,7 +260,8 @@ var UserHomePage = {
         height: "",
         weight: "",
         city: "",
-        email: ""
+        email: "",
+        images: []
       },
       currentUser: {
         username: "",
@@ -277,7 +278,8 @@ var UserHomePage = {
           id: "",
           username: "",
           first_name: "",
-          last_name: ""
+          last_name: "",
+          images: []
         }
       ],
       fitGroups: [
@@ -295,6 +297,7 @@ var UserHomePage = {
       console.log(response.data);
       this.fitGroups = response.data.fit_groups;
       this.friends = response.data.friends;
+      console.log(this.friends);
       router.push("/users/" + this.user.id);
     }.bind(this));
   },
