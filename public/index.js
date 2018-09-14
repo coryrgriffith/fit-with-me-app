@@ -72,7 +72,7 @@ var HomePage = {
   template: "#home-page",
   data: function() {
     return {
-      message: "Welcome to Fit With Me!"
+      message: "Welcome to Fit With Me!",
     };
   },
   created: function() {},
