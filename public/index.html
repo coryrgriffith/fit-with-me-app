@@ -225,7 +225,7 @@
                     <small v-if="message === 'Welcome to Your Personal Home Page'">Welcome {{ user.first_name }}</small>
                   </h2>
                   <div class="col-md-3">
-                    <img v-bind:src="user.images[0].url" alt="Card image cap">
+                    <img v-if="user.images[0]" v-bind:src="user.images[0].url">
                   </div>
                   
                   <p>Username: {{ user.username }}</p>
