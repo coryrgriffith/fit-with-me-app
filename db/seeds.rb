@@ -110,4 +110,13 @@
 # # Cory
 #   Image.create(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfgdq7r1HoNH1XtNV4RfR34nYUe4vwU9a2sZqO69EA7h762qXh", user_id: 1)
 
+# Jack Frost
+  # Image.create(url: "https://vignette.wikia.nocookie.net/riseoftheguardians/images/e/e1/Jack_Frost.jpg/revision/latest?cb=20130308002240", user_id: 11)
+
+# Ash Ketchem
+  # Image.create(url: "https://i.pinimg.com/236x/c0/aa/41/c0aa41b525c128c0b59702e623db22e6--pikachu-and-ash-pokemon-cakes.jpg", user_id: 12)
+
+# Mario
+  # Image.create(url: "https://www.journaldugeek.com/content/uploads/2016/04/Mario-Running.jpg", user_id: 13)
+
 # *************** add images and tie them to users ***********************

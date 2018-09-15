@@ -129,6 +129,7 @@ var SignupPage = {
       username: "",
       first_name: "",
       last_name: "",
+      image_url: "",
       age: "",
       height: "",
       weight: "",
@@ -145,6 +146,7 @@ var SignupPage = {
         username: this.username,
         first_name: this.first_name,
         last_name: this.last_name,
+        url: this.image_url,
         age: this.age,
         height: this.height,
         weight: this.weight,
@@ -156,7 +158,7 @@ var SignupPage = {
       axios
         .post("/api/users", params)
         .then(function(response) {
-          router.push("/login");
+          router.push("/#/login");
         })
         .catch(
           function(error) {

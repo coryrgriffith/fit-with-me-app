@@ -27,6 +27,11 @@ class Api::UsersController < ApplicationController
       password_confirmation: params[:password_confirmation]
     )
     if @user.save
+      image = Image.new(
+        url: params[:url],
+        user_id: @user.id
+      )
+      image.save
       render "show.json.jbuilder"
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity

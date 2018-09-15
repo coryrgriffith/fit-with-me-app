@@ -56,5 +56,8 @@ Rails.application.routes.draw do
 
     post '/friendships' => 'friendships#create'
 
+    post '/images' => 'images#create'
+    patch '/images/:id' => 'images#update'
+
   end
 end
