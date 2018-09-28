@@ -185,7 +185,10 @@
 <template id="exercise-page">
   <div class="vue-component">
     <div class="container">
-      <h1>{{ exercise.title }}</h1>
+      <h2 class="title-divider">
+        <span>Exercise <span class="font-weight-normal text-muted">Database</span></span>
+        <small>{{ exercise.title }}</small>
+      </h2>
       
       <div>
         <p>Exercise Type: {{ exercise.exercise_type }}</p>
