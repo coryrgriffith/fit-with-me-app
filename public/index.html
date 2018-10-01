@@ -796,11 +796,11 @@
       </div>
     </div>
 
-    <div class="modal fade" id="trackWorkoutModal">
+    <div class="modal fade" id="trackWorkoutModal" tabindex="-1" role="dialog" aria-labelledby="trackWorkoutModalLabel" aria-hidden="true"data-backdrop="false">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Track Exercises in this Workout Here</h4>
+            <h4 class="modal-title" id="trackWorkoutModalLabel">Track Exercises in this Workout Here</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -841,7 +841,7 @@
             <div class="card-body">
               <h4 class="card-title">{{ workout.name }}</h4>
               <p class="card-text">Target Goal: {{ workout.target_goal }}</p>
-              <button v-on:click="changeWorkout(workout)"type="button" class="btn btn-primary" data-toggle="modal" data-target="#workoutInfoModal">See Exercise Info</button>
+              <button v-on:click="changeWorkout(workout)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#workoutInfoModal">See Exercise Info</button>
               <!-- add button to add workout to fit group here -->
               <button v-on:click="addSelectedWorkoutToFitGroup(workout)" class="btn btn-secondary" data-dismiss="modal">Add Workout to Fit Group</button>
             </div>
@@ -850,11 +850,11 @@
       </div>
     </div>  
 
-    <div class="modal fade" id="workoutInfoModal">
+    <div class="modal fade" id="workoutInfoModal" tabindex="-1" role="dialog" aria-labelledby="workoutModalLabel" aria-hidden="true" data-backdrop="false">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Workout Information</h4>
+            <h4 class="modal-title" id="workoutModalLabel">Workout Information</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -870,7 +870,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- use button beleow to add workout to fit group -->
-            <button v-on:click="addSelectedWorkoutToFitGroup(selectedWorkout)" class="btn btn-primary" data-dismiss="modal">Add Workout to Fit Group</button>
+            <button type="button" v-on:click="addSelectedWorkoutToFitGroup(selectedWorkout)" class="btn btn-primary" data-dismiss="modal">Add Workout to Fit Group</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
