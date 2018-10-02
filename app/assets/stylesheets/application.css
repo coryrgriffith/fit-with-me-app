@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+require "fit-with-me-app/public/assets/js/custom-script.js"
+require "fit-with-me-app/public/assets/js/script.min.js"
+require "fit-with-me-app/public/assets/css/theme-style.min.css"
+require "fit-with-me-app/public/assets/css/colour-blue.min.css"
+require "fit-with-me-app/public/assets/plugins/flag-icon-css/css/flag-icon.min.css"
+require "fit-with-me-app/public/assets/img/backgrounds/good_day.jpeg"
