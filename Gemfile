@@ -50,6 +50,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'unirest'
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
