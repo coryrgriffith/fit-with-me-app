@@ -12,8 +12,8 @@ Globals.PLUGINS.themePlugin[PLUGINNAME] = function(context) {
 Gulp will render & concat these plugin files automatically into script.js & script.min.js.
 To prevent a plugin from being included by gulp simply delete it or replace the .js extension with .txt.
 
-You can also include each plugin file manually by first moving them to /assets/js/ and then adding them to each page footer after the script.js file is included:
+You can also include each plugin file manually by first moving them to /theme-assets/js/ and then adding them to each page footer after the script.js file is included:
 
-<script src="assets/js/script.js"></script>
-<script src="assets/js/plugins/fakeLoader.js"></script>
+<script src="theme-assets/js/script.js"></script>
+<script src="theme-assets/js/plugins/fakeLoader.js"></script>
 

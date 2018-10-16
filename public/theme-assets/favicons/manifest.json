@@ -2,7 +2,7 @@
     "name": "",
     "icons": [
         {
-            "src": "assets/img/favicons/android-chrome-144x144.png",
+            "src": "theme-assets/img/favicons/android-chrome-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
         }

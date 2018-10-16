@@ -19,7 +19,7 @@
 
 // Config
 var Config = {
-  PLUGINS_LOCALPATH: "./assets/plugins/"
+  PLUGINS_LOCALPATH: "./theme-assets/plugins/"
 };
 
 // Extend using $.extend(true, Config, { PLUGINS_LOCALPATH: 'new/path/setting' });
@@ -932,7 +932,7 @@ window.utils = utils;
         $('.theme-colours a.' + c).addClass('active');
 
         if (c !== defaultColour) {
-          context.find('#colour-scheme').attr('href', 'assets/css/colour-' + c + '.css?x=' + cacheBuster);
+          context.find('#colour-scheme').attr('href', 'theme-assets/css/colour-' + c + '.css?x=' + cacheBuster);
         } else {
           context.find('#colour-scheme').attr('href', '#');
         }

@@ -473,7 +473,7 @@
         $('.theme-colours a.' + c).addClass('active');
 
         if (c !== defaultColour) {
-          context.find('#colour-scheme').attr('href', 'assets/css/colour-' + c + '.css?x=' + cacheBuster);
+          context.find('#colour-scheme').attr('href', 'theme-assets/css/colour-' + c + '.css?x=' + cacheBuster);
         } else {
           context.find('#colour-scheme').attr('href', '#');
         }
